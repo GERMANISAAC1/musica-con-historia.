@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101014">
+<title>Música con Historia | Canciones personalizadas</title>
+<style>
+:root{--bg:#101014;--panel:#19191f;--panel2:#202027;--text:#f7f4f0;--muted:#aaa7b2;--gold:#f5c76b;--gold2:#ffdf9a;--line:rgba(255,255,255,.1);--pink:#eaa1b7;--green:#9bd7bd}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,rgba(116,76,132,.18),transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}.nav{position:sticky;top:0;z-index:20;background:rgba(16,16,20,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:-.5px}.brandmark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--gold),#d58b63);display:grid;place-items:center;color:#211710;font-size:20px}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}.navlinks{display:flex;gap:24px;color:var(--muted);font-size:13px}.navlinks a:hover{color:var(--gold)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:13px;padding:13px 18px;font-weight:800;font-size:14px;transition:.2s}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#251a0c;box-shadow:0 8px 30px rgba(245,199,107,.13)}.secondary{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}.hero{padding:76px 0 54px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:46px}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(245,199,107,.25);color:var(--gold2);background:rgba(245,199,107,.07);padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}h1{font-size:clamp(42px,6vw,70px);line-height:.99;letter-spacing:-3.4px;margin:22px 0 20px;max-width:680px}h1 span{color:var(--gold)}.lead{font-size:17px;color:#c3bfca;max-width:570px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 24px}.proof{display:flex;flex-wrap:wrap;gap:18px;color:var(--muted);font-size:12px}.proof span{display:flex;align-items:center;gap:6px}.visual{min-height:420px;position:relative;display:grid;place-items:center}.record{width:min(390px,100%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at center,#29252b 0 9%,#101014 9.5% 12%,#252229 12.5% 13%,#111115 13.5% 24%,#242128 24.5% 25%,#121216 25.5% 37%,#27232a 37.5% 38%,#111115 38.5% 50%,#28242b 50.5% 51%,#111115 51.5% 63%,#252129 63.5% 64%,#121216 64.5%);box-shadow:0 35px 90px rgba(0,0,0,.45);position:relative;animation:float 6s ease-in-out infinite}.record:before{content:"";position:absolute;inset:24%;border-radius:50%;background:linear-gradient(145deg,#f5d58d,#b87955);display:grid}.record:after{content:"♫";position:absolute;inset:0;display:grid;place-items:center;font-size:58px;color:#2b1b17}.orbit{position:absolute;width:440px;height:440px;border:1px solid rgba(245,199,107,.16);border-radius:50%}.orbit:before,.orbit:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 20px var(--gold)}.orbit:before{top:18%;left:9%}.orbit:after{bottom:13%;right:12%;background:var(--pink);box-shadow:0 0 20px var(--pink)}.floatcard{position:absolute;background:rgba(30,29,36,.88);border:1px solid var(--line);backdrop-filter:blur(12px);border-radius:16px;padding:14px 16px;box-shadow:0 18px 45px rgba(0,0,0,.3)}.floatcard strong{display:block;font-size:13px}.floatcard small{color:var(--muted);font-size:11px}.fc1{top:55px;right:0}.fc2{bottom:45px;left:0}.miniicon{display:inline-grid;place-items:center;width:30px;height:30px;background:rgba(245,199,107,.13);color:var(--gold);border-radius:10px;margin-right:7px}.section{padding:66px 0}.sectionhead{text-align:center;max-width:700px;margin:0 auto 32px}.kicker{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}.section h2{font-size:clamp(28px,4vw,43px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0}.sub{color:var(--muted);margin:0 auto;max-width:600px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tile,.pricecard,.step,.faqitem{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:20px;padding:23px}.tileicon{width:48px;height:48px;border-radius:15px;background:rgba(245,199,107,.1);display:grid;place-items:center;font-size:23px;margin-bottom:16px}.tile h3,.pricecard h3{margin:0 0 8px;font-size:17px}.tile p,.pricecard p{color:var(--muted);font-size:13px;margin:0}.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}.pricecard{position:relative;display:flex;flex-direction:column;padding:22px}.pricecard.featured{border-color:rgba(245,199,107,.65);background:linear-gradient(155deg,rgba(245,199,107,.12),rgba(255,255,255,.025));box-shadow:0 16px 45px rgba(245,199,107,.06)}.popular{position:absolute;top:-11px;right:15px;background:var(--gold);color:#23190b;font-size:9px;font-weight:900;padding:5px 9px;border-radius:99px;letter-spacing:.8px}.price{font-size:34px;font-weight:900;letter-spacing:-1px;margin:14px 0 2px}.price small{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0}.pricecard ul{list-style:none;padding:0;margin:18px 0 24px;color:#d4d0d8;font-size:12px;flex:1}.pricecard li{margin:10px 0;display:flex;gap:8px}.pricecard li:before{content:"✓";color:var(--green);font-weight:900}.pricecard .btn{width:100%;padding:12px 10px}.note{text-align:center;color:var(--muted);font-size:11px;margin-top:18px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.stepnum{font-size:11px;color:var(--gold);font-weight:900;letter-spacing:1.5px}.step h3{margin:10px 0 7px;font-size:16px}.step p{margin:0;color:var(--muted);font-size:13px}.builder{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:start}.formpanel,.preview{border:1px solid var(--line);border-radius:22px;background:var(--panel);padding:24px}.formpanel h3,.preview h3{margin:0 0 5px;font-size:20px}.muted{color:var(--muted);font-size:12px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#ddd8e1}.field input,.field select,.field textarea{width:100%;background:#101015;color:var(--text);border:1px solid #37343e;border-radius:11px;padding:12px;outline:none;min-width:0}.field textarea{resize:vertical;min-height:100px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}.field input::placeholder,.field textarea::placeholder{color:#77727e}.previewart{margin:18px 0;background:radial-gradient(circle at 70% 20%,rgba(234,161,183,.24),transparent 32%),linear-gradient(135deg,#342a36,#15151d 65%);border-radius:16px;min-height:205px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}.previewart:after{content:"♫";position:absolute;right:14px;bottom:-48px;font-size:180px;color:rgba(255,255,255,.055)}.coverlabel{font-size:10px;letter-spacing:2px;color:var(--gold2);font-weight:900}.covername{font-size:34px;font-weight:900;letter-spacing:-1px;line-height:1.02;position:relative;z-index:1;overflow-wrap:anywhere}.coverdesc{color:#d0c8d5;font-size:12px;position:relative;z-index:1}.brief{white-space:pre-wrap;background:#101015;border:1px solid var(--line);padding:14px;border-radius:12px;color:#d3cfda;font-size:12px;min-height:130px;max-height:290px;overflow:auto}.previewactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.previewactions .btn{flex:1}.disclaimer{font-size:11px;color:var(--muted);margin-top:12px}.faq{max-width:800px;margin:auto;display:grid;gap:10px}.faqitem summary{font-weight:800;font-size:14px;cursor:pointer}.faqitem p{color:var(--muted);font-size:13px;margin-bottom:0}.cta{padding:38px;border-radius:26px;background:radial-gradient(circle at 90% 0%,rgba(245,199,107,.19),transparent 38%),linear-gradient(130deg,#29212b,#17171d);border:1px solid rgba(245,199,107,.2);display:flex;align-items:center;justify-content:space-between;gap:24px}.cta h2{margin:0 0 8px;font-size:clamp(26px,4vw,38px);letter-spacing:-1px}.cta p{margin:0;color:var(--muted);font-size:14px}.footer{border-top:1px solid var(--line);padding:28px 0;margin-top:60px;color:var(--muted);font-size:11px}.footerin{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f7f4f0;color:#17151a;padding:12px 18px;border-radius:12px;font-weight:800;font-size:13px;z-index:99;transition:.25s;box-shadow:0 10px 40px #0007}.toast.show{opacity:1;transform:translate(-50%,0)}@keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(1deg)}}@media(max-width:900px){.hero{grid-template-columns:1fr;gap:10px;padding-top:55px}.hero-copy{text-align:center}.hero-copy .lead{margin:auto}.hero-copy .actions,.proof{justify-content:center}.visual{min-height:370px}.record{width:300px}.orbit{width:345px;height:345px}.fc1{right:3%}.fc2{left:3%}.pricing{grid-template-columns:repeat(2,1fr)}.builder{grid-template-columns:1fr}.navlinks{display:none}}@media(max-width:580px){.wrap{width:min(100% - 26px,1120px)}.navin{height:64px}.nav .btn{padding:10px 12px;font-size:12px}.brand{font-size:14px}.hero{padding-top:42px}.hero h1{letter-spacing:-2px;font-size:46px}.lead{font-size:15px}.visual{min-height:320px}.record{width:250px}.orbit{width:290px;height:290px}.fc1{top:12px}.fc2{bottom:12px}.floatcard{padding:10px 11px}.section{padding:48px 0}.grid3,.steps{grid-template-columns:1fr}.pricing{grid-template-columns:1fr}.pricecard{padding:22px}.formpanel,.preview{padding:17px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.cta{padding:25px;align-items:flex-start;flex-direction:column}.covername{font-size:30px}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="#inicio"><span class="brandmark">♫</span><span>MÚSICA CON HISTORIA<small>Emociones hechas canción</small></span></a>
+    <nav class="navlinks"><a href="#como-funciona">Cómo funciona</a><a href="#precios">Paquetes</a><a href="#crear">Crear canción</a></nav>
+    <a class="btn primary" href="#crear">Crear mi canción <span>↗</span></a>
+  </div>
+</header>
+<main>
+<section class="wrap hero" id="inicio">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="dot"></span> Un regalo que nadie más tendrá</div>
+    <h1>No regales otra cosa.<br><span>Regala una canción.</span></h1>
+    <p class="lead">Tu historia, tus recuerdos y esas palabras que a veces cuesta decir… convertidos en una canción personalizada para alguien especial.</p>
+    <div class="actions"><a class="btn primary" href="#crear">✦ Crear una canción</a><a class="btn secondary" href="#precios">Ver paquetes ↓</a></div>
+    <div class="proof"><span>♡ Hecha con tu historia</span><span>♫ Estilo musical a elección</span><span>✧ Regalo digital único</span></div>
+  </div>
+  <div class="visual" aria-label="Ilustración decorativa de un disco musical">
+    <div class="orbit"></div><div class="record"></div>
+    <div class="floatcard fc1"><span class="miniicon">♡</span><strong>Una historia real</strong><small>convertida en música</small></div>
+    <div class="floatcard fc2"><span class="miniicon">♫</span><strong>Solo para esa persona</strong><small>nombre, recuerdos y emoción</small></div>
+  </div>
+</section>
+<section class="section">
+ <div class="wrap">
+  <div class="sectionhead"><div class="kicker">Más que una canción</div><h2>Un recuerdo que se puede escuchar</h2><p class="sub">No vendemos inteligencia artificial. Creamos un regalo personal que dice lo que sientes de una manera inolvidable.</p></div>
+  <div class="grid3">
+   <article class="tile"><div class="tileicon">💌</div><h3>Tu historia es el corazón</h3><p>Un nombre, una anécdota, una frase familiar o un recuerdo importante se convierten en el centro de la canción.</p></article>
+   <article class="tile"><div class="tileicon">🎼</div><h3>Un sonido hecho a medida</h3><p>Balada, pop latino, cumbia, huayno pop andino y más. Elegimos el estilo que mejor expresa la historia.</p></article>
+   <article class="tile"><div class="tileicon">🎁</div><h3>Lista para regalar</h3><p>Según el paquete, puedes sumar portada personalizada, video vertical y un QR para compartir el recuerdo.</p></article>
+  </div>
+ </div>
+</section>
+<section class="section" id="precios">
+ <div class="wrap">
+  <div class="sectionhead"><div class="kicker">Paquetes</div><h2>Elige cómo quieres sorprender</h2><p class="sub">Precios referenciales para validar el servicio. Ajusta el contenido y el precio según tus costos y el trabajo de cada pedido.</p></div>
+  <div class="pricing">
+   <article class="pricecard"><h3>Esencial</h3><p>Una canción personal.</p><div class="price">S/ 59 <small>/ pedido</small></div><ul><li>Concepto y letra personalizados</li><li>Una canción final</li><li>Entrega digital</li></ul><button class="btn secondary choose" data-plan="Esencial" data-price="59">Elegir Esencial</button></article>
+   <article class="pricecard featured"><span class="popular">MÁS ELEGIDO</span><h3>Emoción</h3><p>Un regalo listo para compartir.</p><div class="price">S/ 129 <small>/ pedido</small></div><ul><li>Todo lo del paquete Esencial</li><li>Portada personalizada</li><li>Video vertical breve</li><li>QR para compartir</li></ul><button class="btn primary choose" data-plan="Emoción" data-price="129">Elegir Emoción</button></article>
+   <article class="pricecard"><h3>Experiencia</h3><p>Más opciones para elegir.</p><div class="price">S/ 199 <small>/ pedido</small></div><ul><li>Canción principal</li><li>Dos versiones musicales</li><li>Portada y video vertical</li><li>QR para compartir</li></ul><button class="btn secondary choose" data-plan="Experiencia" data-price="199">Elegir Experiencia</button></article>
+   <article class="pricecard"><h3>Historia completa</h3><p>Para una ocasión especial.</p><div class="price">S/ 399 <small>/ desde</small></div><ul><li>Concepto creativo ampliado</li><li>Varias versiones acordadas</li><li>Videoclip personalizado</li><li>Paquete visual para compartir</li></ul><button class="btn secondary choose" data-plan="Historia completa" data-price="399">Consultar paquete</button></article>
+  </div>
+  <p class="note">Importante: esta página es una demo comercial. No procesa pagos ni genera audio automáticamente.</p>
+ </div>
+</section>
+<section class="section" id="como-funciona">
+ <div class="wrap">
+  <div class="sectionhead"><div class="kicker">Simple y personal</div><h2>De una historia a una canción</h2><p class="sub">El valor está en escuchar, crear un concepto y cuidar el resultado, no solo en apretar un botón.</p></div>
+  <div class="steps">
+   <article class="step"><div class="stepnum">PASO 01</div><h3>Cuéntanos para quién es</h3><p>Nos compartes el nombre, la ocasión, recuerdos y qué te gustaría expresar.</p></article>
+   <article class="step"><div class="stepnum">PASO 02</div><h3>Diseñamos la canción</h3><p>Preparamos el enfoque emocional, la letra y el estilo musical adecuado.</p></article>
+   <article class="step"><div class="stepnum">PASO 03</div><h3>Recibe tu regalo</h3><p>Revisamos las opciones y entregamos el paquete acordado, listo para compartir.</p></article>
+  </div>
+ </div>
+</section>
+<section class="section" id="crear">
+ <div class="wrap">
+  <div class="sectionhead"><div class="kicker">Empieza aquí</div><h2>Cuéntanos la historia</h2><p class="sub">Completa este formulario de muestra y genera un brief que podrás copiar para preparar el pedido.</p></div>
+  <div class="builder">
+   <form class="formpanel" id="songForm">
+    <h3>Tu canción personalizada</h3><div class="muted">Cuanto más personal sea la historia, menos genérica sonará la canción.</div>
+    <div class="formgrid">
+     <div class="field"><label for="recipient">¿Para quién es?</label><input id="recipient" name="recipient" placeholder="Ej. Mi hija Alessia" required></div>
+     <div class="field"><label for="occasion">¿Qué celebramos?</label><select id="occasion" name="occasion"><option>Cumpleaños</option><option>Aniversario</option><option>Amor y pareja</option><option>Para mi hijo o hija</option><option>Para mamá o papá</option><option>Homenaje o recuerdo</option><option>Mi mascota</option><option>Mi pueblo o comunidad</option><option>Mi negocio</option><option>Otra ocasión</option></select></div>
+     <div class="field"><label for="style">Estilo musical</label><select id="style" name="style"><option>Balada cinematográfica</option><option>Pop latino emotivo</option><option>Huayno pop andino</option><option>Cumbia peruana</option><option>Acústica íntima</option><option>Épica orquestal</option><option>Alegre y bailable</option></select></div>
+     <div class="field"><label for="mood">Emoción principal</label><select id="mood" name="mood"><option>Emotiva y conmovedora</option><option>Alegre y luminosa</option><option>Épica e inspiradora</option><option>Nostálgica y tierna</option><option>Romántica</option></select></div>
+     <div class="field full"><label for="story">Cuéntanos su historia</label><textarea id="story" name="story" placeholder="Un recuerdo importante, cómo es esa persona, qué admiras de ella o qué quieres que sienta al escuchar la canción..." required></textarea></div>
+     <div class="field full"><label for="phrase">Una frase que debe aparecer (opcional)</label><input id="phrase" name="phrase" placeholder="Ej. Siempre serás mi niña"></div>
+     <div class="field full"><label for="plan">Paquete elegido</label><select id="plan" name="plan"><option value="Esencial — S/ 59">Esencial — S/ 59</option><option value="Emoción — S/ 129" selected>Emoción — S/ 129</option><option value="Experiencia — S/ 199">Experiencia — S/ 199</option><option value="Historia completa — desde S/ 399">Historia completa — desde S/ 399</option></select></div>
+     <div class="field full"><button class="btn primary" type="submit">Generar brief de mi canción ✦</button></div>
+    </div>
+   </form>
+   <aside class="preview">
+    <h3>Vista previa de tu regalo</h3><div class="muted">Así puede comenzar el concepto creativo.</div>
+    <div class="previewart"><div class="coverlabel">MÚSICA CON HISTORIA · ORIGINAL</div><div><div class="covername" id="coverName">Tu historia<br>en una canción</div><div class="coverdesc" id="coverDesc">Un regalo hecho con emoción</div></div></div>
+    <div class="muted" style="margin-bottom:8px">BRIEF PARA PRODUCCIÓN</div><div class="brief" id="brief">Completa el formulario y pulsa “Generar brief” para preparar la descripción de tu pedido.</div>
+    <div class="previewactions"><button type="button" class="btn secondary" id="copyBtn">Copiar brief</button><button type="button" class="btn primary" id="waBtn">Preparar mensaje</button></div>
+    <p class="disclaimer">El botón “Preparar mensaje” abre WhatsApp con el resumen para que puedas enviarlo al negocio. Cambia el número de WhatsApp en el código antes de publicar. No se realiza ningún cobro en esta demo.</p>
+   </aside>
+  </div>
+ </div>
+</section>
+<section class="section">
+ <div class="wrap">
+  <div class="sectionhead"><div class="kicker">Preguntas frecuentes</div><h2>Antes de crear tu canción</h2></div>
+  <div class="faq">
+   <details class="faqitem"><summary>¿La canción se genera automáticamente desde esta página?</summary><p>No. Esta es una demo de presentación y captura de pedidos. El brief se genera en tu navegador, pero la producción musical y la entrega se hacen manualmente hasta integrar servicios externos.</p></details>
+   <details class="faqitem"><summary>¿Puedo elegir el género musical?</summary><p>Sí. Puedes solicitar balada, pop latino, huayno pop andino, cumbia peruana, acústica u otro estilo que se acuerde antes de producir.</p></details>
+   <details class="faqitem"><summary>¿Cómo se paga y cuánto tarda?</summary><p>Esta versión no procesa pagos ni promete plazos. Antes de vender, define método de pago, plazo de entrega, número de revisiones y condiciones claras.</p></details>
+   <details class="faqitem"><summary>¿Puedo usar la canción con fines comerciales?</summary><p>Los derechos y permisos dependen de las herramientas musicales y de los recursos utilizados. Revisa sus términos vigentes y confirma qué uso permite cada plan antes de ofrecer licencias comerciales.</p></details>
+  </div>
+ </div>
+</section>
+<section class="wrap">
+ <div class="cta"><div><h2>Una historia merece su propia canción.</h2><p>Empieza con unos recuerdos. Nosotros les damos forma musical.</p></div><a href="#crear" class="btn primary">Crear mi canción ↗</a></div>
+</section>
+</main>
+<footer class="footer"><div class="wrap footerin"><span>© <span id="year"></span> Música con Historia · Canciones personalizadas</span><span>Demo comercial · Tu historia. Tu canción. Tu recuerdo.</span></div></footer>
+<div class="toast" id="toast">Listo</div>
+<script>
+const $ = id => document.getElementById(id);
+let currentBrief = "";
+const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(message){const t=$('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+document.querySelectorAll('.choose').forEach(btn=>btn.addEventListener('click',()=>{
+ const plan=btn.dataset.plan, price=btn.dataset.price;
+ const select=$('plan');
+ const map={'Esencial':'Esencial — S/ 59','Emoción':'Emoción — S/ 129','Experiencia':'Experiencia — S/ 199','Historia completa':'Historia completa — desde S/ 399'};
+ select.value=map[plan]||map['Emoción'];
+ $('create')?.scrollIntoView({behavior:'smooth'});
+ location.hash='crear';
+}));
+function makeBrief(){
+ const recipient=$('recipient').value.trim();
+ const occasion=$('occasion').value;
+ const style=$('style').value;
+ const mood=$('mood').value;
+ const story=$('story').value.trim();
+ const phrase=$('phrase').value.trim();
+ const plan=$('plan').value;
+ if(!recipient||!story){toast('Completa el destinatario y la historia');return false}
+ currentBrief=`PEDIDO: MÚSICA CON HISTORIA
+Destinatario: ${recipient}
+Ocasión: ${occasion}
+Estilo musical: ${style}
+Emoción: ${mood}
+Paquete: ${plan}
+
+HISTORIA Y MENSAJE:
+${story}
+${phrase?'\nFRASE QUE DEBE APARECER:\n'+phrase:''}
+
+DIRECCIÓN CREATIVA:
+Crear una canción original y personalizada en español, con un estribillo memorable y emocional. Usar detalles reales de la historia, evitar frases genéricas y no extender demasiado la letra. Cuidar la pronunciación de los nombres. La música debe acompañar la emoción elegida y cerrar con un final memorable.
+
+NOTA DE PRODUCCIÓN:
+Confirmar alcance, plazo, revisiones, derechos de uso y entrega con el cliente antes de producir.`;
+ $('brief').textContent=currentBrief;
+ $('coverName').textContent=recipient;
+ $('coverDesc').textContent=occasion+' · '+style;
+ return true;
+}
+$('songForm').addEventListener('submit',e=>{e.preventDefault();if(makeBrief()){toast('Brief creado. Ya puedes copiarlo.')}});
+$('copyBtn').addEventListener('click',async()=>{
+ if(!currentBrief&&!makeBrief())return;
+ try{await navigator.clipboard.writeText(currentBrief);toast('Brief copiado')}catch(e){const ta=document.createElement('textarea');ta.value=currentBrief;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Brief copiado')}
+});
+$('waBtn').addEventListener('click',()=>{
+ if(!currentBrief&&!makeBrief())return;
+ // Reemplaza 51999999999 por tu número de WhatsApp, incluyendo código de país.
+ const phone='51999999999';
+ const message='Hola, quiero consultar por una canción personalizada:\n\n'+currentBrief;
+ window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank','noopener');
+});
+$('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
