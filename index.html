@@ -219,6 +219,7 @@ h1 em{color:var(--gold);font-style:italic}
      <div class="field full"><label for="phrase">Una frase que debe aparecer (opcional)</label><input id="phrase" placeholder="Ej. Siempre serás mi niña"></div>
      <div class="field"><label for="date">¿Para cuándo la necesitas? (opcional)</label><input id="date" type="date"></div>
      <div class="field"><label for="plan">Paquete</label><select id="plan"></select></div>
+     <div style="position:absolute;left:-9999px;height:0;overflow:hidden" aria-hidden="true"><label>No llenar<input id="website" tabindex="-1" autocomplete="off"></label></div>
      <div class="field full"><button class="btn primary" type="submit">Enviar mi historia ✦</button></div>
     </div>
     <div class="success" id="success"></div>
@@ -257,6 +258,7 @@ h1 em{color:var(--gold);font-style:italic}
     </div></div>
     <div class="wrap" style="padding-bottom:60px">
       <div id="tabOrders">
+        <div id="modeBanner"></div>
         <div class="stats" id="stats"></div>
         <div class="toolbar"><input id="q" placeholder="Buscar por nombre, destinatario, código…"><select id="fstatus"><option value="">Todos los estados</option><option value="nuevo">Nuevos</option><option value="produccion">En producción</option><option value="entregado">Entregados</option><option value="cancelado">Cancelados</option></select><button class="btn secondary small" id="csvBtn">Exportar CSV</button></div>
         <div class="orders" id="ordersList"></div>
@@ -269,11 +271,24 @@ h1 em{color:var(--gold);font-style:italic}
 <div class="toast" id="toast">Listo</div>
 
 <script>
-(function(){
+/* ===== CONFIGURACIÓN DE FIREBASE =====
+   Pega aquí los datos de tu proyecto (Firebase → Configuración del proyecto → Tus apps → Web).
+   Si lo dejas vacío, el sitio funciona en modo local (solo en tu navegador). */
+window.MCH_FIREBASE={
+  apiKey:"",
+  authDomain:"",
+  projectId:"",
+  storageBucket:"",
+  messagingSenderId:"",
+  appId:""
+};
+</script>
+<script>
+(async function(){
 const $=id=>document.getElementById(id);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){toast('No se pudo guardar en este navegador')}}};
-function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2400)}
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2800)}
 
 /* ---------- Ajustes por defecto ---------- */
 const DEFAULTS={
@@ -298,8 +313,41 @@ const DEFAULTS={
  ]
 };
 let S=Object.assign({},DEFAULTS,LS.get('mch_settings',{}));
-function saveSettings(){LS.set('mch_settings',S)}
 const planLabel=p=>p.name+' — '+(p.from?'desde ':'')+'S/ '+p.price;
+
+/* ---------- Capa de datos: Firebase (nube) o navegador (local) ---------- */
+const cfg=window.MCH_FIREBASE||{};
+let CLOUD=!!(cfg.apiKey&&cfg.projectId);
+let fb=null;
+if(CLOUD){
+ try{
+  const base='https://www.gstatic.com/firebasejs/10.12.2/';
+  const [A,F,Au]=await Promise.all([import(base+'firebase-app.js'),import(base+'firebase-firestore.js'),import(base+'firebase-auth.js')]);
+  const app=A.initializeApp(cfg);
+  fb={F,Au,db:F.getFirestore(app),auth:Au.getAuth(app)};
+ }catch(e){console.error('Firebase no cargó',e);CLOUD=false}
+}
+const DB={};
+const normDate=v=>!v?new Date().toISOString():(v.toDate?v.toDate().toISOString():v);
+if(CLOUD){
+ const {F,db}=fb;
+ DB.add=o=>F.setDoc(F.doc(db,'orders',o.id),Object.assign({},o,{created:F.serverTimestamp()}));
+ DB.watch=cb=>F.onSnapshot(F.query(F.collection(db,'orders'),F.orderBy('created','desc')),
+  snap=>cb(snap.docs.map(d=>Object.assign({},d.data(),{id:d.id,created:normDate(d.data().created)}))),
+  err=>{console.error(err);toast('No pude leer los pedidos. Revisa que tu correo sea el del admin en las reglas.')});
+ DB.update=(id,p)=>F.updateDoc(F.doc(db,'orders',id),p);
+ DB.del=id=>F.deleteDoc(F.doc(db,'orders',id));
+ DB.loadSettings=async()=>{try{const s=await F.getDoc(F.doc(db,'settings','site'));return s.exists()?JSON.parse(s.data().json):null}catch(e){return null}};
+ DB.saveSettings=s=>F.setDoc(F.doc(db,'settings','site'),{json:JSON.stringify(s)});
+}else{
+ let subs=[];const lo=()=>LS.get('mch_orders',[]);const fire=()=>subs.forEach(cb=>cb(lo()));
+ DB.add=async o=>{const a=lo();a.unshift(Object.assign({},o,{created:new Date().toISOString()}));LS.set('mch_orders',a);fire()};
+ DB.watch=cb=>{subs.push(cb);cb(lo());return()=>{subs=subs.filter(x=>x!==cb)}};
+ DB.update=async(id,p)=>{const a=lo();const i=a.findIndex(x=>x.id===id);if(i>-1)Object.assign(a[i],p);LS.set('mch_orders',a);fire()};
+ DB.del=async id=>{LS.set('mch_orders',lo().filter(x=>x.id!==id));fire()};
+ DB.loadSettings=async()=>null;
+ DB.saveSettings=async s=>{};
+}
 
 /* ---------- Sitio público ---------- */
 function renderSite(){
@@ -317,7 +365,6 @@ const IDEAS=['Cómo nos conocimos','Una frase que siempre dice','Su comida o lug
 $('chips').innerHTML=IDEAS.map(t=>`<button type="button" class="chip">${esc(t)}</button>`).join('');
 $('chips').addEventListener('click',e=>{if(!e.target.classList.contains('chip'))return;const ta=$('story');ta.value+=(ta.value&&!ta.value.endsWith('\n')?'\n':'')+e.target.textContent+': ';ta.focus();updateCount();livePreview()});
 function updateCount(){$('count').textContent=$('story').value.length}
-
 function val(id){return $(id).value.trim()}
 function buildBrief(){
  const date=val('date');
@@ -349,15 +396,23 @@ function validate(){
  if(val('story').length<30){toast('Cuéntame un poco más de la historia');$('story').focus();return false}
  return true;
 }
-function nextCode(){const n=LS.get('mch_counter',0)+1;LS.set('mch_counter',n);return 'MH-'+String(n).padStart(4,'0')}
-$('songForm').addEventListener('submit',e=>{
+function newCode(){const al='ABCDEFGHJKMNPQRSTUVWXYZ23456789';const b=new Uint8Array(5);crypto.getRandomValues(b);return 'MH-'+[...b].map(x=>al[x%al.length]).join('')}
+$('songForm').addEventListener('submit',async e=>{
  e.preventDefault();if(!validate())return;
- const o={id:nextCode(),created:new Date().toISOString(),status:'nuevo',client:val('client'),phone:val('phone'),recipient:val('recipient'),occasion:$('occasion').value,style:$('style').value,mood:$('mood').value,plan:$('plan').value,story:val('story'),phrase:val('phrase'),date:val('date'),notes:''};
- const all=LS.get('mch_orders',[]);all.unshift(o);LS.set('mch_orders',all);
- $('brief').textContent=buildBrief();
- const s=$('success');s.className='success show';
- s.innerHTML=`<strong>¡Gracias, ${esc(o.client)}!</strong> Recibí tu historia. Tu código es <b>${esc(o.id)}</b>. Para agilizar, también puedes enviármela por WhatsApp.`;
- toast('Pedido registrado');
+ if($('website').value){return}  /* trampa anti-spam: los bots rellenan este campo oculto */
+ const last=LS.get('mch_last',0);if(Date.now()-last<30000){return toast('Espera unos segundos antes de enviar otro pedido')}
+ const btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Enviando…';
+ const o={id:newCode(),status:'nuevo',client:val('client').slice(0,80),phone:val('phone').slice(0,30),recipient:val('recipient').slice(0,80),occasion:$('occasion').value,style:$('style').value,mood:$('mood').value,plan:$('plan').value,story:val('story').slice(0,1500),phrase:val('phrase').slice(0,200),date:val('date'),notes:''};
+ try{
+  await DB.add(o);LS.set('mch_last',Date.now());
+  $('brief').textContent=buildBrief();
+  const s=$('success');s.className='success show';
+  s.innerHTML=`<strong>¡Gracias, ${esc(o.client)}!</strong> Recibí tu historia. Tu código es <b>${esc(o.id)}</b>. Te escribiré por WhatsApp para confirmar los detalles.`;
+  toast('Pedido enviado');
+ }catch(err){
+  console.error(err);toast('No pude enviarlo. Usa el botón de WhatsApp y te atiendo por ahí.');
+ }
+ btn.disabled=false;btn.textContent='Enviar mi historia ✦';
 });
 $('copyBtn').addEventListener('click',async()=>{
  if(!validate())return;const t=buildBrief();
@@ -373,18 +428,27 @@ $('year').textContent=new Date().getFullYear();
 /* ---------- Admin ---------- */
 const ST={nuevo:'Nuevo',produccion:'En producción',entregado:'Entregado',cancelado:'Cancelado'};
 async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-const authed=()=>sessionStorage.getItem('mch_auth')==='1';
+let cloudUser=null,unsub=null,ORD=[];
+const authed=()=>CLOUD?!!cloudUser:sessionStorage.getItem('mch_auth')==='1';
 function openAdmin(){$('admin').classList.add('open');document.body.style.overflow='hidden';authed()?showPanel():showLogin()}
 function closeAdmin(){$('admin').classList.remove('open');document.body.style.overflow='';if(location.hash==='#admin')history.replaceState(null,'',location.pathname+location.search)}
 $('adminLink').addEventListener('click',e=>{e.preventDefault();openAdmin()});
 window.addEventListener('hashchange',()=>{if(location.hash==='#admin')openAdmin()});
+if(CLOUD){fb.Au.onAuthStateChanged(fb.auth,u=>{cloudUser=u;if($('admin').classList.contains('open'))u?showPanel():showLogin()})}
 if(location.hash==='#admin')openAdmin();
 
-async function showLogin(){
- $('panelView').style.display='none';
+function showLogin(){
+ if(unsub){unsub();unsub=null}
+ $('panelView').style.display='none';$('loginView').style.display='block';
+ if(CLOUD){
+  $('loginView').innerHTML=`<form class="login" id="loginForm"><h2>Acceso del equipo</h2><p class="muted">Ingresa con el correo y la contraseña que creaste en Firebase.</p><div class="field"><label for="em">Correo</label><input id="em" type="email" autocomplete="username" autofocus></div><div class="field"><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="current-password"></div><div style="display:flex;gap:8px"><button class="btn primary" style="flex:1" type="submit">Entrar</button><button class="btn secondary" type="button" id="cancelLogin">Volver</button></div><p class="muted" style="margin:14px 0 0"><a href="#" id="forgot" style="text-decoration:underline">Olvidé mi contraseña</a></p></form>`;
+  $('cancelLogin').onclick=closeAdmin;
+  $('forgot').onclick=async e=>{e.preventDefault();const em=$('em').value.trim();if(!em)return toast('Escribe tu correo primero');try{await fb.Au.sendPasswordResetEmail(fb.auth,em)}catch(x){}toast('Si el correo existe, te enviamos un enlace')};
+  $('loginForm').onsubmit=async e=>{e.preventDefault();try{await fb.Au.signInWithEmailAndPassword(fb.auth,$('em').value.trim(),$('pw').value)}catch(x){$('pw').value='';toast('Correo o contraseña incorrectos')}};
+  return;
+ }
  const first=!LS.get('mch_hash',null);
- $('loginView').style.display='block';
- $('loginView').innerHTML=`<form class="login" id="loginForm"><h2>${first?'Crea tu contraseña':'Acceso del equipo'}</h2><p class="muted">${first?'Es la primera vez: elige una contraseña (mínimo 6 caracteres) para este panel.':'Ingresa tu contraseña para ver los pedidos.'}</p><div class="field"><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="${first?'new-password':'current-password'}" autofocus></div>${first?'<div class="field"><label for="pw2">Repite la contraseña</label><input id="pw2" type="password" autocomplete="new-password"></div>':''}<div style="display:flex;gap:8px"><button class="btn primary" style="flex:1" type="submit">${first?'Guardar y entrar':'Entrar'}</button><button class="btn secondary" type="button" id="cancelLogin">Volver</button></div></form>`;
+ $('loginView').innerHTML=`<form class="login" id="loginForm"><h2>${first?'Crea tu contraseña':'Acceso del equipo'}</h2><p class="muted">${first?'Modo local (sin Firebase): elige una contraseña de mínimo 6 caracteres.':'Modo local: ingresa tu contraseña.'}</p><div class="field"><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="${first?'new-password':'current-password'}" autofocus></div>${first?'<div class="field"><label for="pw2">Repite la contraseña</label><input id="pw2" type="password" autocomplete="new-password"></div>':''}<div style="display:flex;gap:8px"><button class="btn primary" style="flex:1" type="submit">${first?'Guardar y entrar':'Entrar'}</button><button class="btn secondary" type="button" id="cancelLogin">Volver</button></div></form>`;
  $('cancelLogin').onclick=closeAdmin;
  $('loginForm').onsubmit=async e=>{
   e.preventDefault();const pw=$('pw').value;
@@ -393,27 +457,31 @@ async function showLogin(){
   sessionStorage.setItem('mch_auth','1');showPanel();
  };
 }
-function showPanel(){$('loginView').style.display='none';$('panelView').style.display='block';renderOrders();renderSettings()}
-$('logout').onclick=()=>{sessionStorage.removeItem('mch_auth');showLogin()};
+function showPanel(){
+ $('loginView').style.display='none';$('panelView').style.display='block';
+ renderSettings();
+ if(!unsub)unsub=DB.watch(list=>{ORD=list;renderOrders()});
+}
+$('logout').onclick=async()=>{if(CLOUD){await fb.Au.signOut(fb.auth)}else{sessionStorage.removeItem('mch_auth');showLogin()}};
 $('viewSite').onclick=closeAdmin;
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));$('tabOrders').style.display=t.dataset.tab==='orders'?'block':'none';$('tabSettings').style.display=t.dataset.tab==='settings'?'block':'none'});
 
-const orders=()=>LS.get('mch_orders',[]);
 const fdate=iso=>new Date(iso).toLocaleDateString('es-PE',{day:'2-digit',month:'short',year:'numeric'});
 function priceOf(o){const m=/S\/\s*(\d+)/.exec(o.plan||'');return m?+m[1]:0}
 function renderOrders(){
- const all=orders(),q=$('q').value.toLowerCase(),f=$('fstatus').value;
+ const all=ORD,q=$('q').value.toLowerCase(),f=$('fstatus').value;
  const cnt=s=>all.filter(o=>o.status===s).length;
  const income=all.filter(o=>o.status==='entregado').reduce((a,o)=>a+priceOf(o),0);
+ $('modeBanner').innerHTML=CLOUD?'':'<div class="empty" style="margin-top:16px;text-align:left;border-color:rgba(233,183,104,.4)">⚠ Modo local: Firebase no está configurado, así que los pedidos solo se guardan en este navegador.</div>';
  $('stats').innerHTML=`<div class="stat"><b>${cnt('nuevo')}</b><span>Nuevos</span></div><div class="stat"><b>${cnt('produccion')}</b><span>En producción</span></div><div class="stat"><b>${cnt('entregado')}</b><span>Entregados</span></div><div class="stat"><b>S/ ${income}</b><span>Entregado (referencial)</span></div>`;
  const list=all.filter(o=>(!f||o.status===f)&&(!q||[o.id,o.client,o.recipient,o.phone,o.occasion].join(' ').toLowerCase().includes(q)));
- $('ordersList').innerHTML=list.length?list.map(o=>`<div class="order" data-id="${esc(o.id)}"><div><h4>${esc(o.id)} · ${esc(o.recipient)} <span class="muted">(${esc(o.occasion)})</span></h4><div class="meta">${esc(o.client)} · ${esc(o.phone)} · ${esc(o.plan)} · ${fdate(o.created)}</div></div><span class="badge b-${esc(o.status)}">${ST[o.status]||esc(o.status)}</span></div>`).join(''):`<div class="empty">${all.length?'Ningún pedido coincide con la búsqueda.':'Aún no hay pedidos. Cuando alguien envíe el formulario desde este mismo navegador, aparecerá aquí.'}</div>`;
+ $('ordersList').innerHTML=list.length?list.map(o=>`<div class="order" data-id="${esc(o.id)}"><div><h4>${esc(o.id)} · ${esc(o.recipient)} <span class="muted">(${esc(o.occasion)})</span></h4><div class="meta">${esc(o.client)} · ${esc(o.phone)} · ${esc(o.plan)} · ${fdate(o.created)}</div></div><span class="badge b-${esc(o.status)}">${ST[o.status]||esc(o.status)}</span></div>`).join(''):`<div class="empty">${all.length?'Ningún pedido coincide con la búsqueda.':'Aún no hay pedidos. Cuando alguien envíe el formulario aparecerá aquí.'}</div>`;
 }
 $('q').addEventListener('input',renderOrders);$('fstatus').addEventListener('change',renderOrders);
 $('ordersList').addEventListener('click',e=>{const el=e.target.closest('.order');if(el)openOrder(el.dataset.id)});
 
 function openOrder(id){
- const o=orders().find(x=>x.id===id);if(!o)return;
+ const o=ORD.find(x=>x.id===id);if(!o)return;
  const msg=`Hola ${o.client}, soy de ${S.brand}. Recibí tu historia para ${o.recipient} (pedido ${o.id}). `;
  $('modal').innerHTML=`<h3>${esc(o.id)} · ${esc(o.recipient)}</h3><div class="muted">${esc(o.client)} · ${esc(o.phone)} · ${fdate(o.created)}</div>
  <div class="setgrid" style="margin-top:14px"><div class="field"><label>Estado</label><select id="mStatus">${Object.entries(ST).map(([k,v])=>`<option value="${k}"${k===o.status?' selected':''}>${v}</option>`).join('')}</select></div><div class="field"><label>Paquete</label><div class="muted">${esc(o.plan)}</div></div></div>
@@ -423,15 +491,14 @@ function openOrder(id){
  <div class="previewactions"><button class="btn primary" id="mSave">Guardar</button><a class="btn secondary" target="_blank" rel="noopener" href="https://wa.me/${esc(o.phone.replace(/\D/g,''))}?text=${encodeURIComponent(msg)}">WhatsApp al cliente</a><button class="btn danger" id="mDel">Eliminar</button><button class="btn secondary" id="mClose">Cerrar</button></div>`;
  $('modalBack').classList.add('open');
  $('mClose').onclick=()=>$('modalBack').classList.remove('open');
- $('mSave').onclick=()=>{const all=orders();const i=all.findIndex(x=>x.id===id);all[i].status=$('mStatus').value;all[i].notes=$('mNotes').value;LS.set('mch_orders',all);$('modalBack').classList.remove('open');renderOrders();toast('Guardado')};
- $('mDel').onclick=()=>{if(confirm('¿Eliminar el pedido '+id+'? No se puede deshacer.')){LS.set('mch_orders',orders().filter(x=>x.id!==id));$('modalBack').classList.remove('open');renderOrders();toast('Pedido eliminado')}};
+ $('mSave').onclick=async()=>{try{await DB.update(id,{status:$('mStatus').value,notes:$('mNotes').value});$('modalBack').classList.remove('open');toast('Guardado')}catch(e){console.error(e);toast('No se pudo guardar')}};
+ $('mDel').onclick=async()=>{if(confirm('¿Eliminar el pedido '+id+'? No se puede deshacer.')){try{await DB.del(id);$('modalBack').classList.remove('open');toast('Pedido eliminado')}catch(e){toast('No se pudo eliminar')}}};
 }
 $('modalBack').addEventListener('click',e=>{if(e.target===$('modalBack'))$('modalBack').classList.remove('open')});
-
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 $('csvBtn').onclick=()=>{
  const rows=[['Código','Fecha','Estado','Cliente','WhatsApp','Para','Ocasión','Estilo','Emoción','Paquete','Fecha deseada','Historia','Frase','Notas']];
- orders().forEach(o=>rows.push([o.id,o.created,ST[o.status],o.client,o.phone,o.recipient,o.occasion,o.style,o.mood,o.plan,o.date,o.story,o.phrase,o.notes]));
+ ORD.forEach(o=>rows.push([o.id,o.created,ST[o.status],o.client,o.phone,o.recipient,o.occasion,o.style,o.mood,o.plan,o.date,o.story,o.phrase,o.notes]));
  download('pedidos.csv','\ufeff'+rows.map(r=>r.map(c=>{let s=String(c==null?'':c);if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}).join(',')).join('\n'),'text/csv');
 };
 
@@ -440,22 +507,22 @@ function renderSettings(){
  <div class="setbox"><h3>Negocio</h3><label>Nombre</label><input id="sBrand" value="${esc(S.brand)}"><label>WhatsApp (con código de país, solo números)</label><input id="sWa" value="${esc(S.whatsapp)}" inputmode="numeric"><label>Mensaje sobre plazos</label><input id="sDel" value="${esc(S.delivery)}"><label>Texto bajo “Paquetes”</label><input id="sPS" value="${esc(S.pricesSub)}"></div>
  <div class="setbox"><h3>Sección “Quién soy”</h3><label>Título</label><input id="sAT" value="${esc(S.aboutTitle)}"><label>Texto (escríbelo con tus palabras)</label><textarea id="sAX" rows="4">${esc(S.aboutText)}</textarea></div>
  <div class="setbox"><h3>Paquetes y precios</h3>${S.plans.map((p,i)=>`<div class="planrow"><input data-k="name" data-i="${i}" value="${esc(p.name)}" aria-label="Nombre"><input data-k="price" data-i="${i}" type="number" min="0" value="${esc(p.price)}" aria-label="Precio"><input data-k="desc" data-i="${i}" value="${esc(p.desc)}" aria-label="Descripción"></div><input data-k="features" data-i="${i}" value="${esc(p.features.join(' | '))}" aria-label="Incluye (separa con |)" style="margin-bottom:14px"><label style="margin:0 0 14px"><input type="checkbox" data-k="featured" data-i="${i}" style="width:auto"${p.featured?' checked':''}> Destacado &nbsp; <input type="checkbox" data-k="from" data-i="${i}" style="width:auto"${p.from?' checked':''}> Precio “desde”</label>`).join('')}<div class="muted">En “Incluye” separa cada punto con el símbolo |</div></div>
- <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"><button class="btn primary" id="sSave">Guardar cambios</button></div>
- <div class="setbox"><h3>Seguridad y respaldo</h3><label>Nueva contraseña</label><input id="sPw" type="password" autocomplete="new-password" placeholder="Déjalo vacío para no cambiarla"><div class="previewactions"><button class="btn secondary" id="bkExport">Descargar respaldo (.json)</button><button class="btn secondary" id="bkImport">Restaurar respaldo</button><button class="btn danger" id="resetAll">Borrar todos los datos</button></div><input type="file" id="bkFile" accept=".json,application/json" style="display:none"><p class="muted" style="margin-top:12px">Importante: los pedidos se guardan solo en este navegador. Descarga un respaldo seguido y no borres los datos del sitio. Para recibir pedidos de cualquier dispositivo hace falta un servidor (por ejemplo Firebase o Supabase) y una contraseña verificada en el servidor.</p></div>`;
+ ${CLOUD?'':'<div class="setbox"><h3>Contraseña (modo local)</h3><label>Nueva contraseña</label><input id="sPw" type="password" autocomplete="new-password" placeholder="Déjalo vacío para no cambiarla"></div>'}
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"><button class="btn primary" id="sSave">Guardar cambios</button><button class="btn secondary" id="bkExport">Descargar respaldo (.json)</button></div>
+ <p class="muted">${CLOUD?'Los ajustes se guardan en la nube y se ven en el sitio para todos los visitantes.':'En modo local los ajustes solo se ven en este navegador.'}</p>`;
  $('sSave').onclick=async()=>{
   S.brand=$('sBrand').value.trim()||DEFAULTS.brand;S.whatsapp=$('sWa').value.replace(/\D/g,'')||DEFAULTS.whatsapp;S.delivery=$('sDel').value;S.pricesSub=$('sPS').value;S.aboutTitle=$('sAT').value;S.aboutText=$('sAX').value;
   $('tabSettings').querySelectorAll('[data-k]').forEach(el=>{const p=S.plans[el.dataset.i],k=el.dataset.k;
-   if(k==='features')p.features=el.value.split('|').map(x=>x.trim()).filter(Boolean);else if(k==='price')p.price=Math.max(0,+el.value||0);else if(el.type==='checkbox')p[k]=el.checked;else p[k]=el.value})
-  const pw=$('sPw').value;if(pw){if(pw.length<6)return toast('La contraseña necesita 6 caracteres o más');LS.set('mch_hash',await sha(pw));$('sPw').value=''}
-  saveSettings();renderSite();toast('Ajustes guardados');
+   if(k==='features')p.features=el.value.split('|').map(x=>x.trim()).filter(Boolean);else if(k==='price')p.price=Math.max(0,+el.value||0);else if(el.type==='checkbox')p[k]=el.checked;else p[k]=el.value});
+  const pwEl=$('sPw');if(pwEl&&pwEl.value){if(pwEl.value.length<6)return toast('La contraseña necesita 6 caracteres o más');LS.set('mch_hash',await sha(pwEl.value));pwEl.value=''}
+  LS.set('mch_settings',S);renderSite();
+  try{await DB.saveSettings(S);toast('Ajustes guardados')}catch(e){console.error(e);toast('Se guardó aquí, pero no en la nube (revisa permisos)')}
  };
- $('bkExport').onclick=()=>download('respaldo-musica-con-historia.json',JSON.stringify({settings:S,orders:orders(),counter:LS.get('mch_counter',0)},null,2),'application/json');
- $('bkImport').onclick=()=>$('bkFile').click();
- $('bkFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.orders))throw 0;if(!confirm('Esto reemplaza los pedidos y ajustes actuales. ¿Continuar?'))return;LS.set('mch_orders',d.orders);LS.set('mch_counter',d.counter||d.orders.length);if(d.settings){S=Object.assign({},DEFAULTS,d.settings);saveSettings()}renderSite();renderOrders();renderSettings();toast('Respaldo restaurado')}catch(x){toast('El archivo no es un respaldo válido')}};r.readAsText(f)};
- $('resetAll').onclick=()=>{if(confirm('¿Borrar pedidos y ajustes de este navegador?')&&confirm('Última confirmación: no se puede deshacer.')){['mch_orders','mch_counter','mch_settings'].forEach(k=>localStorage.removeItem(k));S=Object.assign({},DEFAULTS);renderSite();renderOrders();renderSettings();toast('Datos borrados')}};
+ $('bkExport').onclick=()=>download('respaldo-musica-con-historia.json',JSON.stringify({settings:S,orders:ORD},null,2),'application/json');
 }
 
 renderSite();updateCount();
+if(CLOUD){const remote=await DB.loadSettings();if(remote){S=Object.assign({},DEFAULTS,remote);LS.set('mch_settings',S);renderSite()}}
 })();
 </script>
 </body>
