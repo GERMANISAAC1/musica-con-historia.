@@ -3,168 +3,460 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101014">
-<title>Música con Historia | Canciones personalizadas</title>
+<meta name="theme-color" content="#14110f">
+<meta name="description" content="Canciones hechas a mano con tu historia: cumpleaños, aniversarios, homenajes y más. Un regalo que se escucha y se guarda.">
+<title>Música con Historia | Canciones hechas con tu historia</title>
 <style>
-:root{--bg:#101014;--panel:#19191f;--panel2:#202027;--text:#f7f4f0;--muted:#aaa7b2;--gold:#f5c76b;--gold2:#ffdf9a;--line:rgba(255,255,255,.1);--pink:#eaa1b7;--green:#9bd7bd}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,rgba(116,76,132,.18),transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}.nav{position:sticky;top:0;z-index:20;background:rgba(16,16,20,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:-.5px}.brandmark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--gold),#d58b63);display:grid;place-items:center;color:#211710;font-size:20px}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}.navlinks{display:flex;gap:24px;color:var(--muted);font-size:13px}.navlinks a:hover{color:var(--gold)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:13px;padding:13px 18px;font-weight:800;font-size:14px;transition:.2s}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#251a0c;box-shadow:0 8px 30px rgba(245,199,107,.13)}.secondary{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}.hero{padding:76px 0 54px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:46px}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(245,199,107,.25);color:var(--gold2);background:rgba(245,199,107,.07);padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}h1{font-size:clamp(42px,6vw,70px);line-height:.99;letter-spacing:-3.4px;margin:22px 0 20px;max-width:680px}h1 span{color:var(--gold)}.lead{font-size:17px;color:#c3bfca;max-width:570px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 24px}.proof{display:flex;flex-wrap:wrap;gap:18px;color:var(--muted);font-size:12px}.proof span{display:flex;align-items:center;gap:6px}.visual{min-height:420px;position:relative;display:grid;place-items:center}.record{width:min(390px,100%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at center,#29252b 0 9%,#101014 9.5% 12%,#252229 12.5% 13%,#111115 13.5% 24%,#242128 24.5% 25%,#121216 25.5% 37%,#27232a 37.5% 38%,#111115 38.5% 50%,#28242b 50.5% 51%,#111115 51.5% 63%,#252129 63.5% 64%,#121216 64.5%);box-shadow:0 35px 90px rgba(0,0,0,.45);position:relative;animation:float 6s ease-in-out infinite}.record:before{content:"";position:absolute;inset:24%;border-radius:50%;background:linear-gradient(145deg,#f5d58d,#b87955);display:grid}.record:after{content:"♫";position:absolute;inset:0;display:grid;place-items:center;font-size:58px;color:#2b1b17}.orbit{position:absolute;width:440px;height:440px;border:1px solid rgba(245,199,107,.16);border-radius:50%}.orbit:before,.orbit:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 20px var(--gold)}.orbit:before{top:18%;left:9%}.orbit:after{bottom:13%;right:12%;background:var(--pink);box-shadow:0 0 20px var(--pink)}.floatcard{position:absolute;background:rgba(30,29,36,.88);border:1px solid var(--line);backdrop-filter:blur(12px);border-radius:16px;padding:14px 16px;box-shadow:0 18px 45px rgba(0,0,0,.3)}.floatcard strong{display:block;font-size:13px}.floatcard small{color:var(--muted);font-size:11px}.fc1{top:55px;right:0}.fc2{bottom:45px;left:0}.miniicon{display:inline-grid;place-items:center;width:30px;height:30px;background:rgba(245,199,107,.13);color:var(--gold);border-radius:10px;margin-right:7px}.section{padding:66px 0}.sectionhead{text-align:center;max-width:700px;margin:0 auto 32px}.kicker{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}.section h2{font-size:clamp(28px,4vw,43px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0}.sub{color:var(--muted);margin:0 auto;max-width:600px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tile,.pricecard,.step,.faqitem{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:20px;padding:23px}.tileicon{width:48px;height:48px;border-radius:15px;background:rgba(245,199,107,.1);display:grid;place-items:center;font-size:23px;margin-bottom:16px}.tile h3,.pricecard h3{margin:0 0 8px;font-size:17px}.tile p,.pricecard p{color:var(--muted);font-size:13px;margin:0}.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}.pricecard{position:relative;display:flex;flex-direction:column;padding:22px}.pricecard.featured{border-color:rgba(245,199,107,.65);background:linear-gradient(155deg,rgba(245,199,107,.12),rgba(255,255,255,.025));box-shadow:0 16px 45px rgba(245,199,107,.06)}.popular{position:absolute;top:-11px;right:15px;background:var(--gold);color:#23190b;font-size:9px;font-weight:900;padding:5px 9px;border-radius:99px;letter-spacing:.8px}.price{font-size:34px;font-weight:900;letter-spacing:-1px;margin:14px 0 2px}.price small{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0}.pricecard ul{list-style:none;padding:0;margin:18px 0 24px;color:#d4d0d8;font-size:12px;flex:1}.pricecard li{margin:10px 0;display:flex;gap:8px}.pricecard li:before{content:"✓";color:var(--green);font-weight:900}.pricecard .btn{width:100%;padding:12px 10px}.note{text-align:center;color:var(--muted);font-size:11px;margin-top:18px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.stepnum{font-size:11px;color:var(--gold);font-weight:900;letter-spacing:1.5px}.step h3{margin:10px 0 7px;font-size:16px}.step p{margin:0;color:var(--muted);font-size:13px}.builder{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:start}.formpanel,.preview{border:1px solid var(--line);border-radius:22px;background:var(--panel);padding:24px}.formpanel h3,.preview h3{margin:0 0 5px;font-size:20px}.muted{color:var(--muted);font-size:12px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#ddd8e1}.field input,.field select,.field textarea{width:100%;background:#101015;color:var(--text);border:1px solid #37343e;border-radius:11px;padding:12px;outline:none;min-width:0}.field textarea{resize:vertical;min-height:100px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}.field input::placeholder,.field textarea::placeholder{color:#77727e}.previewart{margin:18px 0;background:radial-gradient(circle at 70% 20%,rgba(234,161,183,.24),transparent 32%),linear-gradient(135deg,#342a36,#15151d 65%);border-radius:16px;min-height:205px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}.previewart:after{content:"♫";position:absolute;right:14px;bottom:-48px;font-size:180px;color:rgba(255,255,255,.055)}.coverlabel{font-size:10px;letter-spacing:2px;color:var(--gold2);font-weight:900}.covername{font-size:34px;font-weight:900;letter-spacing:-1px;line-height:1.02;position:relative;z-index:1;overflow-wrap:anywhere}.coverdesc{color:#d0c8d5;font-size:12px;position:relative;z-index:1}.brief{white-space:pre-wrap;background:#101015;border:1px solid var(--line);padding:14px;border-radius:12px;color:#d3cfda;font-size:12px;min-height:130px;max-height:290px;overflow:auto}.previewactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.previewactions .btn{flex:1}.disclaimer{font-size:11px;color:var(--muted);margin-top:12px}.faq{max-width:800px;margin:auto;display:grid;gap:10px}.faqitem summary{font-weight:800;font-size:14px;cursor:pointer}.faqitem p{color:var(--muted);font-size:13px;margin-bottom:0}.cta{padding:38px;border-radius:26px;background:radial-gradient(circle at 90% 0%,rgba(245,199,107,.19),transparent 38%),linear-gradient(130deg,#29212b,#17171d);border:1px solid rgba(245,199,107,.2);display:flex;align-items:center;justify-content:space-between;gap:24px}.cta h2{margin:0 0 8px;font-size:clamp(26px,4vw,38px);letter-spacing:-1px}.cta p{margin:0;color:var(--muted);font-size:14px}.footer{border-top:1px solid var(--line);padding:28px 0;margin-top:60px;color:var(--muted);font-size:11px}.footerin{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f7f4f0;color:#17151a;padding:12px 18px;border-radius:12px;font-weight:800;font-size:13px;z-index:99;transition:.25s;box-shadow:0 10px 40px #0007}.toast.show{opacity:1;transform:translate(-50%,0)}@keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(1deg)}}@media(max-width:900px){.hero{grid-template-columns:1fr;gap:10px;padding-top:55px}.hero-copy{text-align:center}.hero-copy .lead{margin:auto}.hero-copy .actions,.proof{justify-content:center}.visual{min-height:370px}.record{width:300px}.orbit{width:345px;height:345px}.fc1{right:3%}.fc2{left:3%}.pricing{grid-template-columns:repeat(2,1fr)}.builder{grid-template-columns:1fr}.navlinks{display:none}}@media(max-width:580px){.wrap{width:min(100% - 26px,1120px)}.navin{height:64px}.nav .btn{padding:10px 12px;font-size:12px}.brand{font-size:14px}.hero{padding-top:42px}.hero h1{letter-spacing:-2px;font-size:46px}.lead{font-size:15px}.visual{min-height:320px}.record{width:250px}.orbit{width:290px;height:290px}.fc1{top:12px}.fc2{bottom:12px}.floatcard{padding:10px 11px}.section{padding:48px 0}.grid3,.steps{grid-template-columns:1fr}.pricing{grid-template-columns:1fr}.pricecard{padding:22px}.formpanel,.preview{padding:17px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.cta{padding:25px;align-items:flex-start;flex-direction:column}.covername{font-size:30px}}
+:root{--bg:#14110f;--panel:#1d1915;--panel2:#26211c;--text:#f6efe6;--muted:#b3a89b;--gold:#e9b768;--gold2:#f6d79a;--line:rgba(255,240,220,.11);--rose:#e3a3a0;--green:#9cc9a8;--red:#e07a6f;--serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 85% -5%,rgba(190,120,90,.16),transparent 40%),var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.wrap{width:min(1100px,calc(100% - 36px));margin:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:700}
+.nav{position:sticky;top:0;z-index:20;background:rgba(20,17,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.navin{height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:19px;font-weight:700}
+.brandmark{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c97f5c);display:grid;place-items:center;color:#2a1a10;font-size:18px}
+.navlinks{display:flex;gap:26px;color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 20px;font-weight:700;font-size:14px;transition:transform .15s,opacity .15s}
+.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#2a1b0b}
+.secondary{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}
+.danger{background:rgba(224,122,111,.12);border:1px solid rgba(224,122,111,.4);color:var(--red)}
+.small{padding:8px 12px;font-size:12px;border-radius:9px}
+.hero{padding:70px 0 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{color:var(--gold2);font-size:13px;font-style:italic;font-family:var(--serif)}
+h1{font-size:clamp(38px,5.6vw,62px);line-height:1.05;letter-spacing:-1.5px;margin:14px 0 18px}
+h1 em{color:var(--gold);font-style:italic}
+.lead{font-size:18px;color:#d3c9bc;max-width:540px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 20px}
+.proof{color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 20px}
+.note-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;transform:rotate(1.2deg);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.note-card p{font-family:var(--serif);font-size:17px;font-style:italic;color:#e8dccb;margin:0 0 14px}
+.note-card .sign{font-family:var(--sans);font-size:12px;color:var(--muted);font-style:normal}
+.note-card .tag{display:inline-block;font-size:11px;color:var(--gold2);border:1px dashed rgba(233,183,104,.4);border-radius:99px;padding:3px 10px;margin-bottom:14px}
+.section{padding:60px 0}
+.sectionhead{max-width:640px;margin:0 auto 34px;text-align:center}
+.kicker{color:var(--gold);font-size:13px;font-style:italic;font-family:var(--serif)}
+.section h2{font-size:clamp(26px,3.8vw,38px);line-height:1.15;margin:8px 0 10px}
+.sub{color:var(--muted);margin:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile,.pricecard,.step,.faqitem{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
+.tile h3,.step h3,.pricecard h3{margin:0 0 8px;font-size:19px}
+.tile p,.step p{margin:0;color:var(--muted);font-size:14px}
+.emoji{font-size:26px;margin-bottom:10px}
+.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pricecard{display:flex;flex-direction:column;position:relative}
+.pricecard.featured{border-color:rgba(233,183,104,.6);background:linear-gradient(160deg,rgba(233,183,104,.1),var(--panel))}
+.popular{position:absolute;top:-11px;right:14px;background:var(--gold);color:#2a1b0b;font-size:10px;font-weight:800;padding:4px 10px;border-radius:99px}
+.pricecard p.d{color:var(--muted);font-size:13px;margin:0}
+.price{font-family:var(--serif);font-size:34px;font-weight:700;margin:14px 0 0}.price small{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400}
+.pricecard ul{list-style:none;padding:0;margin:14px 0 22px;font-size:13px;color:#ddd2c4;flex:1}
+.pricecard li{margin:9px 0;display:flex;gap:8px}.pricecard li:before{content:"✓";color:var(--green);font-weight:700}
+.note{text-align:center;color:var(--muted);font-size:13px;margin-top:18px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stepnum{font-family:var(--serif);font-size:30px;color:var(--gold);line-height:1}
+.about{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px}
+.avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold));display:grid;place-items:center;font-size:40px}
+.about h3{margin:0 0 8px;font-size:22px}.about p{margin:0 0 10px;color:#d3c9bc}
+.builder{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:start}
+.formpanel,.preview{border:1px solid var(--line);border-radius:22px;background:var(--panel);padding:26px}
+.formpanel h3,.preview h3{margin:0 0 4px;font-size:22px}
+.muted{color:var(--muted);font-size:13px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
+.field label{font-size:13px;font-weight:700}.field .hint{font-size:12px;color:var(--muted);font-weight:400}
+.field input,.field select,.field textarea{width:100%;background:#120f0d;color:var(--text);border:1px solid #3a322a;border-radius:11px;padding:12px;outline:none;min-width:0}
+.field textarea{resize:vertical;min-height:130px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.field input::placeholder,.field textarea::placeholder{color:#7d7266}
+.counter{font-size:11px;color:var(--muted);text-align:right}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:5px 11px;font-size:12px}
+.chip:hover{color:var(--gold2);border-color:rgba(233,183,104,.4)}
+.previewart{margin:16px 0;background:radial-gradient(circle at 75% 15%,rgba(227,163,160,.25),transparent 35%),linear-gradient(135deg,#3a2c2c,#17130f 70%);border-radius:16px;min-height:190px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.previewart:after{content:"♫";position:absolute;right:12px;bottom:-44px;font-size:170px;color:rgba(255,255,255,.05)}
+.coverlabel{font-size:10px;letter-spacing:2px;color:var(--gold2);font-weight:700}
+.covername{font-family:var(--serif);font-size:32px;font-weight:700;line-height:1.05;position:relative;z-index:1;overflow-wrap:anywhere}
+.coverdesc{color:#d7cbd0;font-size:13px;position:relative;z-index:1}
+.brief{white-space:pre-wrap;background:#120f0d;border:1px solid var(--line);padding:14px;border-radius:12px;color:#d9cfc2;font-size:12px;min-height:110px;max-height:260px;overflow:auto}
+.previewactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.previewactions .btn{flex:1}
+.disclaimer{font-size:12px;color:var(--muted);margin:12px 0 0}
+.success{display:none;background:rgba(156,201,168,.1);border:1px solid rgba(156,201,168,.4);border-radius:14px;padding:16px;margin-top:14px;font-size:14px}
+.success.show{display:block}.success strong{color:var(--green)}
+.faq{max-width:780px;margin:auto;display:grid;gap:10px}
+.faqitem summary{font-weight:700;cursor:pointer}.faqitem p{color:var(--muted);font-size:14px;margin:10px 0 0}
+.cta{padding:36px;border-radius:24px;background:radial-gradient(circle at 90% 0%,rgba(233,183,104,.2),transparent 40%),#221b17;border:1px solid rgba(233,183,104,.22);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.cta h2{margin:0 0 6px;font-size:clamp(24px,3.6vw,34px)}.cta p{margin:0;color:var(--muted)}
+.footer{border-top:1px solid var(--line);padding:26px 0;margin-top:60px;color:var(--muted);font-size:12px}
+.footerin{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.footerin a:hover{color:var(--gold)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f6efe6;color:#1b1713;padding:12px 18px;border-radius:12px;font-weight:700;font-size:13px;z-index:200;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+/* ADMIN */
+#admin{display:none;position:fixed;inset:0;z-index:100;background:var(--bg);overflow:auto}
+#admin.open{display:block}
+.adminbar{position:sticky;top:0;z-index:5;background:rgba(20,17,15,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.adminbar .in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
+.tabs{display:flex;gap:6px}
+.tab{background:none;border:0;color:var(--muted);padding:8px 14px;border-radius:9px;font-weight:700;font-size:14px}
+.tab.on{background:var(--panel2);color:var(--gold2)}
+.login{max-width:380px;margin:12vh auto;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:30px}
+.login h2{margin:0 0 6px}.login .field{margin:16px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-family:var(--serif);font-size:28px;color:var(--gold2)}.stat span{font-size:12px;color:var(--muted)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.toolbar input,.toolbar select{background:#120f0d;color:var(--text);border:1px solid #3a322a;border-radius:10px;padding:10px 12px;outline:none}
+.toolbar input{flex:1;min-width:180px}
+.orders{display:grid;gap:10px}
+.order{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;cursor:pointer}
+.order:hover{border-color:rgba(233,183,104,.4)}
+.order h4{margin:0;font-size:15px}.order .meta{font-size:12px;color:var(--muted)}
+.badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;white-space:nowrap}
+.b-nuevo{background:rgba(233,183,104,.15);color:var(--gold2)}.b-produccion{background:rgba(130,170,230,.15);color:#a9c4f0}.b-entregado{background:rgba(156,201,168,.15);color:var(--green)}.b-cancelado{background:rgba(224,122,111,.15);color:var(--red)}
+.empty{text-align:center;color:var(--muted);padding:44px 10px;border:1px dashed var(--line);border-radius:14px}
+.modalback{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:150;padding:20px;overflow:auto}
+.modalback.open{display:block}
+.modal{max-width:640px;margin:20px auto;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:24px}
+.modal h3{margin:0 0 4px;font-size:22px}
+.setgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.setbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+.setbox h3{margin:0 0 12px;font-size:18px}
+.planrow{display:grid;grid-template-columns:1.2fr .6fr 1fr;gap:8px;margin-bottom:10px}
+.planrow input,.setbox input,.setbox textarea{background:#120f0d;color:var(--text);border:1px solid #3a322a;border-radius:10px;padding:10px;outline:none;width:100%;min-width:0}
+.setbox label{font-size:12px;font-weight:700;display:block;margin:10px 0 5px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:44px}.note-card{transform:none}.pricing{grid-template-columns:repeat(2,1fr)}.builder{grid-template-columns:1fr}.navlinks{display:none}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.wrap{width:calc(100% - 26px)}.grid3,.steps,.pricing,.formgrid,.setgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.cta{flex-direction:column;align-items:flex-start;padding:24px}.about{grid-template-columns:1fr;text-align:center}.avatar{margin:auto}.navin .btn{padding:10px 12px;font-size:12px}.planrow{grid-template-columns:1fr}.tab{padding:8px 10px;font-size:13px}.order{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
 <header class="nav">
   <div class="wrap navin">
-    <a class="brand" href="#inicio"><span class="brandmark">♫</span><span>MÚSICA CON HISTORIA<small>Emociones hechas canción</small></span></a>
-    <nav class="navlinks"><a href="#como-funciona">Cómo funciona</a><a href="#precios">Paquetes</a><a href="#crear">Crear canción</a></nav>
-    <a class="btn primary" href="#crear">Crear mi canción <span>↗</span></a>
+    <a class="brand" href="#inicio"><span class="brandmark">♫</span><span id="brandName">Música con Historia</span></a>
+    <nav class="navlinks"><a href="#como-funciona">Cómo trabajo</a><a href="#precios">Paquetes</a><a href="#quien">Quién soy</a><a href="#crear">Pedir mi canción</a></nav>
+    <a class="btn primary" href="#crear">Pedir mi canción</a>
   </div>
 </header>
+
 <main>
 <section class="wrap hero" id="inicio">
-  <div class="hero-copy">
-    <div class="eyebrow"><span class="dot"></span> Un regalo que nadie más tendrá</div>
-    <h1>No regales otra cosa.<br><span>Regala una canción.</span></h1>
-    <p class="lead">Tu historia, tus recuerdos y esas palabras que a veces cuesta decir… convertidos en una canción personalizada para alguien especial.</p>
-    <div class="actions"><a class="btn primary" href="#crear">✦ Crear una canción</a><a class="btn secondary" href="#precios">Ver paquetes ↓</a></div>
-    <div class="proof"><span>♡ Hecha con tu historia</span><span>♫ Estilo musical a elección</span><span>✧ Regalo digital único</span></div>
+  <div>
+    <div class="eyebrow">Canciones hechas a mano, una por una</div>
+    <h1>Hay cosas que cuesta decir. <em>Una canción las dice por ti.</em></h1>
+    <p class="lead">Me cuentas quién es esa persona, qué han vivido juntos y qué te gustaría que sintiera. Yo lo convierto en una canción con su nombre, sus recuerdos y tu cariño dentro.</p>
+    <div class="actions"><a class="btn primary" href="#crear">Contarme la historia</a><a class="btn secondary" href="#precios">Ver paquetes</a></div>
+    <div class="proof"><span>♡ Letra con detalles reales</span><span>♫ Tú eliges el estilo</span><span>✉ Respondo por WhatsApp</span></div>
   </div>
-  <div class="visual" aria-label="Ilustración decorativa de un disco musical">
-    <div class="orbit"></div><div class="record"></div>
-    <div class="floatcard fc1"><span class="miniicon">♡</span><strong>Una historia real</strong><small>convertida en música</small></div>
-    <div class="floatcard fc2"><span class="miniicon">♫</span><strong>Solo para esa persona</strong><small>nombre, recuerdos y emoción</small></div>
-  </div>
+  <aside class="note-card" aria-label="Ejemplo de cómo empieza un pedido">
+    <span class="tag">Así suele empezar un pedido</span>
+    <p>“Mi mamá cumple 60. Siempre canta mientras cocina y dice que el domingo es para la familia. Quiero que sepa lo mucho que la admiramos.”</p>
+    <span class="sign">— Un mensaje como este ya es suficiente para empezar.</span>
+  </aside>
 </section>
+
 <section class="section">
  <div class="wrap">
-  <div class="sectionhead"><div class="kicker">Más que una canción</div><h2>Un recuerdo que se puede escuchar</h2><p class="sub">No vendemos inteligencia artificial. Creamos un regalo personal que dice lo que sientes de una manera inolvidable.</p></div>
+  <div class="sectionhead"><div class="kicker">Por qué es distinto</div><h2>No es una canción cualquiera con un nombre cambiado</h2><p class="sub">Cada pedido empieza con tu historia. Si algo no suena a esa persona, lo ajustamos.</p></div>
   <div class="grid3">
-   <article class="tile"><div class="tileicon">💌</div><h3>Tu historia es el corazón</h3><p>Un nombre, una anécdota, una frase familiar o un recuerdo importante se convierten en el centro de la canción.</p></article>
-   <article class="tile"><div class="tileicon">🎼</div><h3>Un sonido hecho a medida</h3><p>Balada, pop latino, cumbia, huayno pop andino y más. Elegimos el estilo que mejor expresa la historia.</p></article>
-   <article class="tile"><div class="tileicon">🎁</div><h3>Lista para regalar</h3><p>Según el paquete, puedes sumar portada personalizada, video vertical y un QR para compartir el recuerdo.</p></article>
+   <article class="tile"><div class="emoji">💌</div><h3>Tu historia manda</h3><p>Una anécdota, una frase de la casa, un apodo. Los detalles pequeños son los que hacen llorar (de la buena manera).</p></article>
+   <article class="tile"><div class="emoji">🎼</div><h3>El estilo que le va</h3><p>Balada, pop latino, cumbia, huayno pop andino, acústica… Si dudas, te recomiendo según la persona y la ocasión.</p></article>
+   <article class="tile"><div class="emoji">🎁</div><h3>Lista para regalar</h3><p>Según el paquete, recibes portada, video vertical y un QR para compartirla en el momento justo.</p></article>
   </div>
  </div>
 </section>
+
 <section class="section" id="precios">
  <div class="wrap">
-  <div class="sectionhead"><div class="kicker">Paquetes</div><h2>Elige cómo quieres sorprender</h2><p class="sub">Precios referenciales para validar el servicio. Ajusta el contenido y el precio según tus costos y el trabajo de cada pedido.</p></div>
-  <div class="pricing">
-   <article class="pricecard"><h3>Esencial</h3><p>Una canción personal.</p><div class="price">S/ 59 <small>/ pedido</small></div><ul><li>Concepto y letra personalizados</li><li>Una canción final</li><li>Entrega digital</li></ul><button class="btn secondary choose" data-plan="Esencial" data-price="59">Elegir Esencial</button></article>
-   <article class="pricecard featured"><span class="popular">MÁS ELEGIDO</span><h3>Emoción</h3><p>Un regalo listo para compartir.</p><div class="price">S/ 129 <small>/ pedido</small></div><ul><li>Todo lo del paquete Esencial</li><li>Portada personalizada</li><li>Video vertical breve</li><li>QR para compartir</li></ul><button class="btn primary choose" data-plan="Emoción" data-price="129">Elegir Emoción</button></article>
-   <article class="pricecard"><h3>Experiencia</h3><p>Más opciones para elegir.</p><div class="price">S/ 199 <small>/ pedido</small></div><ul><li>Canción principal</li><li>Dos versiones musicales</li><li>Portada y video vertical</li><li>QR para compartir</li></ul><button class="btn secondary choose" data-plan="Experiencia" data-price="199">Elegir Experiencia</button></article>
-   <article class="pricecard"><h3>Historia completa</h3><p>Para una ocasión especial.</p><div class="price">S/ 399 <small>/ desde</small></div><ul><li>Concepto creativo ampliado</li><li>Varias versiones acordadas</li><li>Videoclip personalizado</li><li>Paquete visual para compartir</li></ul><button class="btn secondary choose" data-plan="Historia completa" data-price="399">Consultar paquete</button></article>
-  </div>
-  <p class="note">Importante: esta página es una demo comercial. No procesa pagos ni genera audio automáticamente.</p>
+  <div class="sectionhead"><div class="kicker">Paquetes</div><h2>Elige cómo quieres sorprender</h2><p class="sub" id="pricesSub">Si no sabes cuál te conviene, escríbeme y lo vemos juntos.</p></div>
+  <div class="pricing" id="pricing"></div>
+  <p class="note" id="deliveryNote"></p>
  </div>
 </section>
+
 <section class="section" id="como-funciona">
  <div class="wrap">
-  <div class="sectionhead"><div class="kicker">Simple y personal</div><h2>De una historia a una canción</h2><p class="sub">El valor está en escuchar, crear un concepto y cuidar el resultado, no solo en apretar un botón.</p></div>
+  <div class="sectionhead"><div class="kicker">Cómo trabajo</div><h2>De unos recuerdos a una canción</h2></div>
   <div class="steps">
-   <article class="step"><div class="stepnum">PASO 01</div><h3>Cuéntanos para quién es</h3><p>Nos compartes el nombre, la ocasión, recuerdos y qué te gustaría expresar.</p></article>
-   <article class="step"><div class="stepnum">PASO 02</div><h3>Diseñamos la canción</h3><p>Preparamos el enfoque emocional, la letra y el estilo musical adecuado.</p></article>
-   <article class="step"><div class="stepnum">PASO 03</div><h3>Recibe tu regalo</h3><p>Revisamos las opciones y entregamos el paquete acordado, listo para compartir.</p></article>
+   <article class="step"><div class="stepnum">1</div><h3>Me cuentas la historia</h3><p>Llenas el formulario con lo que recuerdes. No tiene que estar bonito, solo ser verdad.</p></article>
+   <article class="step"><div class="stepnum">2</div><h3>Escribo y preparo la canción</h3><p>Armo la letra, elijo el sonido y cuido que los nombres y los detalles estén bien.</p></article>
+   <article class="step"><div class="stepnum">3</div><h3>Lo revisamos juntos</h3><p>Te la envío, me dices qué sentiste y, si hace falta, hacemos los ajustes acordados.</p></article>
   </div>
  </div>
 </section>
+
+<section class="section" id="quien">
+ <div class="wrap">
+  <div class="about">
+   <div class="avatar">🎙️</div>
+   <div>
+     <h3 id="aboutTitle">Hola, soy quien está detrás de cada canción</h3>
+     <p id="aboutText">Creo que una canción puede decir lo que un mensaje no alcanza. Por eso leo cada historia con calma y no entrego dos canciones iguales. Escríbeme si tienes dudas: prefiero conversar antes que adivinar.</p>
+     <p class="muted">Tip: reemplaza este texto y agrega tu foto desde el panel de ajustes o directamente en el código.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
 <section class="section" id="crear">
  <div class="wrap">
-  <div class="sectionhead"><div class="kicker">Empieza aquí</div><h2>Cuéntanos la historia</h2><p class="sub">Completa este formulario de muestra y genera un brief que podrás copiar para preparar el pedido.</p></div>
+  <div class="sectionhead"><div class="kicker">Empecemos</div><h2>Cuéntame la historia</h2><p class="sub">Tómate tu tiempo. Con tres o cuatro recuerdos ya hay canción.</p></div>
   <div class="builder">
-   <form class="formpanel" id="songForm">
-    <h3>Tu canción personalizada</h3><div class="muted">Cuanto más personal sea la historia, menos genérica sonará la canción.</div>
+   <form class="formpanel" id="songForm" novalidate>
+    <h3>Tu canción personalizada</h3><div class="muted">Los campos con * son los necesarios. Lo demás me ayuda a afinar.</div>
     <div class="formgrid">
-     <div class="field"><label for="recipient">¿Para quién es?</label><input id="recipient" name="recipient" placeholder="Ej. Mi hija Alessia" required></div>
-     <div class="field"><label for="occasion">¿Qué celebramos?</label><select id="occasion" name="occasion"><option>Cumpleaños</option><option>Aniversario</option><option>Amor y pareja</option><option>Para mi hijo o hija</option><option>Para mamá o papá</option><option>Homenaje o recuerdo</option><option>Mi mascota</option><option>Mi pueblo o comunidad</option><option>Mi negocio</option><option>Otra ocasión</option></select></div>
-     <div class="field"><label for="style">Estilo musical</label><select id="style" name="style"><option>Balada cinematográfica</option><option>Pop latino emotivo</option><option>Huayno pop andino</option><option>Cumbia peruana</option><option>Acústica íntima</option><option>Épica orquestal</option><option>Alegre y bailable</option></select></div>
-     <div class="field"><label for="mood">Emoción principal</label><select id="mood" name="mood"><option>Emotiva y conmovedora</option><option>Alegre y luminosa</option><option>Épica e inspiradora</option><option>Nostálgica y tierna</option><option>Romántica</option></select></div>
-     <div class="field full"><label for="story">Cuéntanos su historia</label><textarea id="story" name="story" placeholder="Un recuerdo importante, cómo es esa persona, qué admiras de ella o qué quieres que sienta al escuchar la canción..." required></textarea></div>
-     <div class="field full"><label for="phrase">Una frase que debe aparecer (opcional)</label><input id="phrase" name="phrase" placeholder="Ej. Siempre serás mi niña"></div>
-     <div class="field full"><label for="plan">Paquete elegido</label><select id="plan" name="plan"><option value="Esencial — S/ 59">Esencial — S/ 59</option><option value="Emoción — S/ 129" selected>Emoción — S/ 129</option><option value="Experiencia — S/ 199">Experiencia — S/ 199</option><option value="Historia completa — desde S/ 399">Historia completa — desde S/ 399</option></select></div>
-     <div class="field full"><button class="btn primary" type="submit">Generar brief de mi canción ✦</button></div>
+     <div class="field"><label for="client">Tu nombre *</label><input id="client" placeholder="Ej. Carlos" required></div>
+     <div class="field"><label for="phone">Tu WhatsApp *</label><input id="phone" type="tel" inputmode="tel" placeholder="Ej. 987 654 321" required></div>
+     <div class="field"><label for="recipient">¿Para quién es? *</label><input id="recipient" placeholder="Ej. Mi hija Alessia" required></div>
+     <div class="field"><label for="occasion">¿Qué celebramos?</label><select id="occasion"><option>Cumpleaños</option><option>Aniversario</option><option>Amor y pareja</option><option>Para mi hijo o hija</option><option>Para mamá o papá</option><option>Homenaje o recuerdo</option><option>Mi mascota</option><option>Mi pueblo o comunidad</option><option>Mi negocio</option><option>Otra ocasión</option></select></div>
+     <div class="field"><label for="style">Estilo musical</label><select id="style"><option>Balada cinematográfica</option><option>Pop latino emotivo</option><option>Huayno pop andino</option><option>Cumbia peruana</option><option>Acústica íntima</option><option>Épica orquestal</option><option>Alegre y bailable</option><option>No sé, recomiéndame</option></select></div>
+     <div class="field"><label for="mood">Emoción principal</label><select id="mood"><option>Emotiva y conmovedora</option><option>Alegre y luminosa</option><option>Épica e inspiradora</option><option>Nostálgica y tierna</option><option>Romántica</option></select></div>
+     <div class="field full"><label for="story">La historia *</label>
+       <span class="hint">¿No sabes por dónde empezar? Toca una idea para agregarla:</span>
+       <div class="chips" id="chips"></div>
+       <textarea id="story" maxlength="1500" placeholder="Un recuerdo importante, cómo es esa persona, qué admiras de ella o qué quieres que sienta al escuchar la canción..." required></textarea>
+       <div class="counter"><span id="count">0</span>/1500</div></div>
+     <div class="field full"><label for="phrase">Una frase que debe aparecer (opcional)</label><input id="phrase" placeholder="Ej. Siempre serás mi niña"></div>
+     <div class="field"><label for="date">¿Para cuándo la necesitas? (opcional)</label><input id="date" type="date"></div>
+     <div class="field"><label for="plan">Paquete</label><select id="plan"></select></div>
+     <div class="field full"><button class="btn primary" type="submit">Enviar mi historia ✦</button></div>
     </div>
+    <div class="success" id="success"></div>
    </form>
    <aside class="preview">
-    <h3>Vista previa de tu regalo</h3><div class="muted">Así puede comenzar el concepto creativo.</div>
-    <div class="previewart"><div class="coverlabel">MÚSICA CON HISTORIA · ORIGINAL</div><div><div class="covername" id="coverName">Tu historia<br>en una canción</div><div class="coverdesc" id="coverDesc">Un regalo hecho con emoción</div></div></div>
-    <div class="muted" style="margin-bottom:8px">BRIEF PARA PRODUCCIÓN</div><div class="brief" id="brief">Completa el formulario y pulsa “Generar brief” para preparar la descripción de tu pedido.</div>
-    <div class="previewactions"><button type="button" class="btn secondary" id="copyBtn">Copiar brief</button><button type="button" class="btn primary" id="waBtn">Preparar mensaje</button></div>
-    <p class="disclaimer">El botón “Preparar mensaje” abre WhatsApp con el resumen para que puedas enviarlo al negocio. Cambia el número de WhatsApp en el código antes de publicar. No se realiza ningún cobro en esta demo.</p>
+    <h3>Así va tomando forma</h3><div class="muted">Se actualiza mientras escribes.</div>
+    <div class="previewart"><div class="coverlabel">MÚSICA CON HISTORIA · ORIGINAL</div><div><div class="covername" id="coverName">Tu historia<br>en una canción</div><div class="coverdesc" id="coverDesc">Un regalo hecho con cariño</div></div></div>
+    <div class="muted" style="margin-bottom:8px">RESUMEN DE TU PEDIDO</div><div class="brief" id="brief">Cuando completes el formulario verás aquí el resumen.</div>
+    <div class="previewactions"><button type="button" class="btn secondary" id="copyBtn">Copiar resumen</button><button type="button" class="btn secondary" id="waBtn">Escribirme por WhatsApp</button></div>
+    <p class="disclaimer">Al enviar, tu pedido queda registrado y te contacto para confirmar detalles, plazo y pago. No se cobra nada automáticamente.</p>
    </aside>
   </div>
  </div>
 </section>
+
 <section class="section">
  <div class="wrap">
-  <div class="sectionhead"><div class="kicker">Preguntas frecuentes</div><h2>Antes de crear tu canción</h2></div>
-  <div class="faq">
-   <details class="faqitem"><summary>¿La canción se genera automáticamente desde esta página?</summary><p>No. Esta es una demo de presentación y captura de pedidos. El brief se genera en tu navegador, pero la producción musical y la entrega se hacen manualmente hasta integrar servicios externos.</p></details>
-   <details class="faqitem"><summary>¿Puedo elegir el género musical?</summary><p>Sí. Puedes solicitar balada, pop latino, huayno pop andino, cumbia peruana, acústica u otro estilo que se acuerde antes de producir.</p></details>
-   <details class="faqitem"><summary>¿Cómo se paga y cuánto tarda?</summary><p>Esta versión no procesa pagos ni promete plazos. Antes de vender, define método de pago, plazo de entrega, número de revisiones y condiciones claras.</p></details>
-   <details class="faqitem"><summary>¿Puedo usar la canción con fines comerciales?</summary><p>Los derechos y permisos dependen de las herramientas musicales y de los recursos utilizados. Revisa sus términos vigentes y confirma qué uso permite cada plan antes de ofrecer licencias comerciales.</p></details>
-  </div>
+  <div class="sectionhead"><div class="kicker">Dudas comunes</div><h2>Antes de pedir tu canción</h2></div>
+  <div class="faq" id="faq"></div>
  </div>
 </section>
-<section class="wrap">
- <div class="cta"><div><h2>Una historia merece su propia canción.</h2><p>Empieza con unos recuerdos. Nosotros les damos forma musical.</p></div><a href="#crear" class="btn primary">Crear mi canción ↗</a></div>
-</section>
+
+<section class="wrap"><div class="cta"><div><h2>Esa persona merece escuchar lo que sientes.</h2><p>Empieza con unos recuerdos. Yo me encargo de darles música.</p></div><a href="#crear" class="btn primary">Pedir mi canción</a></div></section>
 </main>
-<footer class="footer"><div class="wrap footerin"><span>© <span id="year"></span> Música con Historia · Canciones personalizadas</span><span>Demo comercial · Tu historia. Tu canción. Tu recuerdo.</span></div></footer>
+
+<footer class="footer"><div class="wrap footerin"><span>© <span id="year"></span> <span id="footName">Música con Historia</span> · Hecho con cariño</span><a href="#admin" id="adminLink">Acceso del equipo</a></div></footer>
+
+<!-- ADMIN -->
+<div id="admin" aria-label="Panel de administración">
+  <div id="loginView"></div>
+  <div id="panelView" style="display:none">
+    <div class="adminbar"><div class="wrap in">
+      <div class="brand"><span class="brandmark">♫</span><span>Panel</span></div>
+      <div class="tabs"><button class="tab on" data-tab="orders">Pedidos</button><button class="tab" data-tab="settings">Ajustes</button></div>
+      <div style="display:flex;gap:8px"><button class="btn secondary small" id="viewSite">Ver sitio</button><button class="btn secondary small" id="logout">Salir</button></div>
+    </div></div>
+    <div class="wrap" style="padding-bottom:60px">
+      <div id="tabOrders">
+        <div class="stats" id="stats"></div>
+        <div class="toolbar"><input id="q" placeholder="Buscar por nombre, destinatario, código…"><select id="fstatus"><option value="">Todos los estados</option><option value="nuevo">Nuevos</option><option value="produccion">En producción</option><option value="entregado">Entregados</option><option value="cancelado">Cancelados</option></select><button class="btn secondary small" id="csvBtn">Exportar CSV</button></div>
+        <div class="orders" id="ordersList"></div>
+      </div>
+      <div id="tabSettings" style="display:none;padding-top:22px"></div>
+    </div>
+  </div>
+</div>
+<div class="modalback" id="modalBack"><div class="modal" id="modal"></div></div>
 <div class="toast" id="toast">Listo</div>
+
 <script>
-const $ = id => document.getElementById(id);
-let currentBrief = "";
-const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function toast(message){const t=$('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
-document.querySelectorAll('.choose').forEach(btn=>btn.addEventListener('click',()=>{
- const plan=btn.dataset.plan, price=btn.dataset.price;
- const select=$('plan');
- const map={'Esencial':'Esencial — S/ 59','Emoción':'Emoción — S/ 129','Experiencia':'Experiencia — S/ 199','Historia completa':'Historia completa — desde S/ 399'};
- select.value=map[plan]||map['Emoción'];
- $('create')?.scrollIntoView({behavior:'smooth'});
- location.hash='crear';
-}));
-function makeBrief(){
- const recipient=$('recipient').value.trim();
- const occasion=$('occasion').value;
- const style=$('style').value;
- const mood=$('mood').value;
- const story=$('story').value.trim();
- const phrase=$('phrase').value.trim();
- const plan=$('plan').value;
- if(!recipient||!story){toast('Completa el destinatario y la historia');return false}
- currentBrief=`PEDIDO: MÚSICA CON HISTORIA
-Destinatario: ${recipient}
-Ocasión: ${occasion}
-Estilo musical: ${style}
-Emoción: ${mood}
-Paquete: ${plan}
+(function(){
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){toast('No se pudo guardar en este navegador')}}};
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2400)}
 
-HISTORIA Y MENSAJE:
-${story}
-${phrase?'\nFRASE QUE DEBE APARECER:\n'+phrase:''}
+/* ---------- Ajustes por defecto ---------- */
+const DEFAULTS={
+ brand:'Música con Historia',
+ whatsapp:'51999999999',
+ delivery:'Normalmente entrego en 3 a 5 días. Si es para una fecha cercana, avísame y vemos qué es posible.',
+ pricesSub:'Si no sabes cuál te conviene, escríbeme y lo vemos juntos.',
+ aboutTitle:'Hola, soy quien está detrás de cada canción',
+ aboutText:'Creo que una canción puede decir lo que un mensaje no alcanza. Por eso leo cada historia con calma y no entrego dos canciones iguales. Escríbeme si tienes dudas: prefiero conversar antes que adivinar.',
+ plans:[
+  {name:'Esencial',price:59,from:false,featured:false,desc:'Una canción personal.',features:['Letra hecha con tu historia','Una canción final','Entrega digital']},
+  {name:'Emoción',price:129,from:false,featured:true,desc:'Un regalo listo para compartir.',features:['Todo lo del paquete Esencial','Portada personalizada','Video vertical breve','QR para compartir']},
+  {name:'Experiencia',price:199,from:false,featured:false,desc:'Más opciones para elegir.',features:['Canción principal','Dos versiones musicales','Portada y video vertical','QR para compartir']},
+  {name:'Historia completa',price:399,from:true,featured:false,desc:'Para una ocasión muy especial.',features:['Concepto creativo ampliado','Varias versiones acordadas','Videoclip personalizado','Paquete visual para compartir']}
+ ],
+ faq:[
+  ['¿La canción sale automáticamente de la página?','No. La página recibe tu historia y yo preparo la canción con calma. Por eso cada una suena distinta.'],
+  ['¿Puedo elegir el estilo?','Sí: balada, pop latino, huayno pop andino, cumbia, acústica u otro. Si no sabes, te sugiero uno.'],
+  ['¿Cómo pago y cuánto demora?','Cuando te escriba por WhatsApp confirmamos el paquete, el plazo y las formas de pago antes de empezar.'],
+  ['¿Puedo hacer cambios?','Sí. Cada paquete incluye revisiones razonables que acordamos al empezar, por ejemplo corregir un nombre o un dato.'],
+  ['¿Puedo usarla con fines comerciales?','Depende de las herramientas y permisos usados. Si la necesitas para un negocio, dímelo desde el inicio para confirmarte qué uso es posible.']
+ ]
+};
+let S=Object.assign({},DEFAULTS,LS.get('mch_settings',{}));
+function saveSettings(){LS.set('mch_settings',S)}
+const planLabel=p=>p.name+' — '+(p.from?'desde ':'')+'S/ '+p.price;
 
-DIRECCIÓN CREATIVA:
-Crear una canción original y personalizada en español, con un estribillo memorable y emocional. Usar detalles reales de la historia, evitar frases genéricas y no extender demasiado la letra. Cuidar la pronunciación de los nombres. La música debe acompañar la emoción elegida y cerrar con un final memorable.
+/* ---------- Sitio público ---------- */
+function renderSite(){
+ $('brandName').textContent=S.brand;$('footName').textContent=S.brand;document.title=S.brand+' | Canciones hechas con tu historia';
+ $('pricesSub').textContent=S.pricesSub;$('deliveryNote').textContent=S.delivery;
+ $('aboutTitle').textContent=S.aboutTitle;$('aboutText').textContent=S.aboutText;
+ $('pricing').innerHTML=S.plans.map((p,i)=>`<article class="pricecard${p.featured?' featured':''}">${p.featured?'<span class="popular">LA MÁS ELEGIDA</span>':''}<h3>${esc(p.name)}</h3><p class="d">${esc(p.desc)}</p><div class="price">S/ ${esc(p.price)} <small>${p.from?'/ desde':'/ pedido'}</small></div><ul>${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul><button class="btn ${p.featured?'primary':'secondary'} choose" data-i="${i}">${p.from?'Consultar':'Elegir '+esc(p.name)}</button></article>`).join('');
+ const cur=$('plan').value;
+ $('plan').innerHTML=S.plans.map(p=>`<option value="${esc(planLabel(p))}">${esc(planLabel(p))}</option>`).join('');
+ if(cur&&[...$('plan').options].some(o=>o.value===cur))$('plan').value=cur;else{const f=S.plans.find(p=>p.featured);if(f)$('plan').value=planLabel(f)}
+ $('faq').innerHTML=S.faq.map(f=>`<details class="faqitem"><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join('');
+ document.querySelectorAll('.choose').forEach(b=>b.addEventListener('click',()=>{$('plan').value=planLabel(S.plans[b.dataset.i]);$('crear').scrollIntoView({behavior:'smooth'})}));
+}
+const IDEAS=['Cómo nos conocimos','Una frase que siempre dice','Su comida o lugar favorito','Algo que hizo por mí','Un recuerdo de infancia','Lo que le diría si pudiera'];
+$('chips').innerHTML=IDEAS.map(t=>`<button type="button" class="chip">${esc(t)}</button>`).join('');
+$('chips').addEventListener('click',e=>{if(!e.target.classList.contains('chip'))return;const ta=$('story');ta.value+=(ta.value&&!ta.value.endsWith('\n')?'\n':'')+e.target.textContent+': ';ta.focus();updateCount();livePreview()});
+function updateCount(){$('count').textContent=$('story').value.length}
 
-NOTA DE PRODUCCIÓN:
-Confirmar alcance, plazo, revisiones, derechos de uso y entrega con el cliente antes de producir.`;
- $('brief').textContent=currentBrief;
- $('coverName').textContent=recipient;
- $('coverDesc').textContent=occasion+' · '+style;
+function val(id){return $(id).value.trim()}
+function buildBrief(){
+ const date=val('date');
+ return `PEDIDO · ${S.brand.toUpperCase()}
+Cliente: ${val('client')} (${val('phone')})
+Para: ${val('recipient')}
+Ocasión: ${$('occasion').value}
+Estilo: ${$('style').value}
+Emoción: ${$('mood').value}
+Paquete: ${$('plan').value}${date?'\nFecha deseada: '+date:''}
+
+HISTORIA:
+${val('story')}${val('phrase')?'\n\nFRASE QUE DEBE APARECER:\n'+val('phrase'):''}
+
+NOTAS PARA LA PRODUCCIÓN:
+Canción original en español, con estribillo memorable. Usar detalles reales de la historia, evitar frases genéricas y cuidar la pronunciación de los nombres.`;
+}
+function livePreview(){
+ const r=val('recipient');
+ $('coverName').textContent=r||'Tu historia\nen una canción';
+ $('coverDesc').textContent=r?$('occasion').value+' · '+$('style').value:'Un regalo hecho con cariño';
+ if(r&&val('story')&&val('client')&&val('phone'))$('brief').textContent=buildBrief();
+}
+['client','phone','recipient','occasion','style','mood','story','phrase','date','plan'].forEach(id=>$(id).addEventListener('input',()=>{updateCount();livePreview()}));
+function validate(){
+ const miss=[['client','tu nombre'],['phone','tu WhatsApp'],['recipient','para quién es'],['story','la historia']].filter(x=>!val(x[0]));
+ if(miss.length){toast('Falta: '+miss.map(m=>m[1]).join(', '));$(miss[0][0]).focus();return false}
+ if(val('phone').replace(/\D/g,'').length<7){toast('Revisa tu número de WhatsApp');$('phone').focus();return false}
+ if(val('story').length<30){toast('Cuéntame un poco más de la historia');$('story').focus();return false}
  return true;
 }
-$('songForm').addEventListener('submit',e=>{e.preventDefault();if(makeBrief()){toast('Brief creado. Ya puedes copiarlo.')}});
+function nextCode(){const n=LS.get('mch_counter',0)+1;LS.set('mch_counter',n);return 'MH-'+String(n).padStart(4,'0')}
+$('songForm').addEventListener('submit',e=>{
+ e.preventDefault();if(!validate())return;
+ const o={id:nextCode(),created:new Date().toISOString(),status:'nuevo',client:val('client'),phone:val('phone'),recipient:val('recipient'),occasion:$('occasion').value,style:$('style').value,mood:$('mood').value,plan:$('plan').value,story:val('story'),phrase:val('phrase'),date:val('date'),notes:''};
+ const all=LS.get('mch_orders',[]);all.unshift(o);LS.set('mch_orders',all);
+ $('brief').textContent=buildBrief();
+ const s=$('success');s.className='success show';
+ s.innerHTML=`<strong>¡Gracias, ${esc(o.client)}!</strong> Recibí tu historia. Tu código es <b>${esc(o.id)}</b>. Para agilizar, también puedes enviármela por WhatsApp.`;
+ toast('Pedido registrado');
+});
 $('copyBtn').addEventListener('click',async()=>{
- if(!currentBrief&&!makeBrief())return;
- try{await navigator.clipboard.writeText(currentBrief);toast('Brief copiado')}catch(e){const ta=document.createElement('textarea');ta.value=currentBrief;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Brief copiado')}
+ if(!validate())return;const t=buildBrief();
+ try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}
+ toast('Resumen copiado')
 });
 $('waBtn').addEventListener('click',()=>{
- if(!currentBrief&&!makeBrief())return;
- // Reemplaza 51999999999 por tu número de WhatsApp, incluyendo código de país.
- const phone='51999999999';
- const message='Hola, quiero consultar por una canción personalizada:\n\n'+currentBrief;
- window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank','noopener');
+ if(!validate())return;
+ window.open('https://wa.me/'+S.whatsapp.replace(/\D/g,'')+'?text='+encodeURIComponent('Hola, quiero pedir una canción personalizada:\n\n'+buildBrief()),'_blank','noopener');
 });
 $('year').textContent=new Date().getFullYear();
+
+/* ---------- Admin ---------- */
+const ST={nuevo:'Nuevo',produccion:'En producción',entregado:'Entregado',cancelado:'Cancelado'};
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+const authed=()=>sessionStorage.getItem('mch_auth')==='1';
+function openAdmin(){$('admin').classList.add('open');document.body.style.overflow='hidden';authed()?showPanel():showLogin()}
+function closeAdmin(){$('admin').classList.remove('open');document.body.style.overflow='';if(location.hash==='#admin')history.replaceState(null,'',location.pathname+location.search)}
+$('adminLink').addEventListener('click',e=>{e.preventDefault();openAdmin()});
+window.addEventListener('hashchange',()=>{if(location.hash==='#admin')openAdmin()});
+if(location.hash==='#admin')openAdmin();
+
+async function showLogin(){
+ $('panelView').style.display='none';
+ const first=!LS.get('mch_hash',null);
+ $('loginView').style.display='block';
+ $('loginView').innerHTML=`<form class="login" id="loginForm"><h2>${first?'Crea tu contraseña':'Acceso del equipo'}</h2><p class="muted">${first?'Es la primera vez: elige una contraseña (mínimo 6 caracteres) para este panel.':'Ingresa tu contraseña para ver los pedidos.'}</p><div class="field"><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="${first?'new-password':'current-password'}" autofocus></div>${first?'<div class="field"><label for="pw2">Repite la contraseña</label><input id="pw2" type="password" autocomplete="new-password"></div>':''}<div style="display:flex;gap:8px"><button class="btn primary" style="flex:1" type="submit">${first?'Guardar y entrar':'Entrar'}</button><button class="btn secondary" type="button" id="cancelLogin">Volver</button></div></form>`;
+ $('cancelLogin').onclick=closeAdmin;
+ $('loginForm').onsubmit=async e=>{
+  e.preventDefault();const pw=$('pw').value;
+  if(first){if(pw.length<6)return toast('Mínimo 6 caracteres');if(pw!==$('pw2').value)return toast('Las contraseñas no coinciden');LS.set('mch_hash',await sha(pw))}
+  else if(await sha(pw)!==LS.get('mch_hash')){$('pw').value='';return toast('Contraseña incorrecta')}
+  sessionStorage.setItem('mch_auth','1');showPanel();
+ };
+}
+function showPanel(){$('loginView').style.display='none';$('panelView').style.display='block';renderOrders();renderSettings()}
+$('logout').onclick=()=>{sessionStorage.removeItem('mch_auth');showLogin()};
+$('viewSite').onclick=closeAdmin;
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));$('tabOrders').style.display=t.dataset.tab==='orders'?'block':'none';$('tabSettings').style.display=t.dataset.tab==='settings'?'block':'none'});
+
+const orders=()=>LS.get('mch_orders',[]);
+const fdate=iso=>new Date(iso).toLocaleDateString('es-PE',{day:'2-digit',month:'short',year:'numeric'});
+function priceOf(o){const m=/S\/\s*(\d+)/.exec(o.plan||'');return m?+m[1]:0}
+function renderOrders(){
+ const all=orders(),q=$('q').value.toLowerCase(),f=$('fstatus').value;
+ const cnt=s=>all.filter(o=>o.status===s).length;
+ const income=all.filter(o=>o.status==='entregado').reduce((a,o)=>a+priceOf(o),0);
+ $('stats').innerHTML=`<div class="stat"><b>${cnt('nuevo')}</b><span>Nuevos</span></div><div class="stat"><b>${cnt('produccion')}</b><span>En producción</span></div><div class="stat"><b>${cnt('entregado')}</b><span>Entregados</span></div><div class="stat"><b>S/ ${income}</b><span>Entregado (referencial)</span></div>`;
+ const list=all.filter(o=>(!f||o.status===f)&&(!q||[o.id,o.client,o.recipient,o.phone,o.occasion].join(' ').toLowerCase().includes(q)));
+ $('ordersList').innerHTML=list.length?list.map(o=>`<div class="order" data-id="${esc(o.id)}"><div><h4>${esc(o.id)} · ${esc(o.recipient)} <span class="muted">(${esc(o.occasion)})</span></h4><div class="meta">${esc(o.client)} · ${esc(o.phone)} · ${esc(o.plan)} · ${fdate(o.created)}</div></div><span class="badge b-${esc(o.status)}">${ST[o.status]||esc(o.status)}</span></div>`).join(''):`<div class="empty">${all.length?'Ningún pedido coincide con la búsqueda.':'Aún no hay pedidos. Cuando alguien envíe el formulario desde este mismo navegador, aparecerá aquí.'}</div>`;
+}
+$('q').addEventListener('input',renderOrders);$('fstatus').addEventListener('change',renderOrders);
+$('ordersList').addEventListener('click',e=>{const el=e.target.closest('.order');if(el)openOrder(el.dataset.id)});
+
+function openOrder(id){
+ const o=orders().find(x=>x.id===id);if(!o)return;
+ const msg=`Hola ${o.client}, soy de ${S.brand}. Recibí tu historia para ${o.recipient} (pedido ${o.id}). `;
+ $('modal').innerHTML=`<h3>${esc(o.id)} · ${esc(o.recipient)}</h3><div class="muted">${esc(o.client)} · ${esc(o.phone)} · ${fdate(o.created)}</div>
+ <div class="setgrid" style="margin-top:14px"><div class="field"><label>Estado</label><select id="mStatus">${Object.entries(ST).map(([k,v])=>`<option value="${k}"${k===o.status?' selected':''}>${v}</option>`).join('')}</select></div><div class="field"><label>Paquete</label><div class="muted">${esc(o.plan)}</div></div></div>
+ <p class="muted" style="margin-top:14px">${esc(o.occasion)} · ${esc(o.style)} · ${esc(o.mood)}${o.date?' · Para el '+esc(o.date):''}</p>
+ <div class="brief" style="max-height:220px">${esc(o.story)}${o.phrase?'\n\nFrase: '+esc(o.phrase):''}</div>
+ <div class="field" style="margin-top:14px"><label>Notas internas</label><textarea id="mNotes" placeholder="Letra en curso, pagos recibidos, cambios pedidos…">${esc(o.notes)}</textarea></div>
+ <div class="previewactions"><button class="btn primary" id="mSave">Guardar</button><a class="btn secondary" target="_blank" rel="noopener" href="https://wa.me/${esc(o.phone.replace(/\D/g,''))}?text=${encodeURIComponent(msg)}">WhatsApp al cliente</a><button class="btn danger" id="mDel">Eliminar</button><button class="btn secondary" id="mClose">Cerrar</button></div>`;
+ $('modalBack').classList.add('open');
+ $('mClose').onclick=()=>$('modalBack').classList.remove('open');
+ $('mSave').onclick=()=>{const all=orders();const i=all.findIndex(x=>x.id===id);all[i].status=$('mStatus').value;all[i].notes=$('mNotes').value;LS.set('mch_orders',all);$('modalBack').classList.remove('open');renderOrders();toast('Guardado')};
+ $('mDel').onclick=()=>{if(confirm('¿Eliminar el pedido '+id+'? No se puede deshacer.')){LS.set('mch_orders',orders().filter(x=>x.id!==id));$('modalBack').classList.remove('open');renderOrders();toast('Pedido eliminado')}};
+}
+$('modalBack').addEventListener('click',e=>{if(e.target===$('modalBack'))$('modalBack').classList.remove('open')});
+
+function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+$('csvBtn').onclick=()=>{
+ const rows=[['Código','Fecha','Estado','Cliente','WhatsApp','Para','Ocasión','Estilo','Emoción','Paquete','Fecha deseada','Historia','Frase','Notas']];
+ orders().forEach(o=>rows.push([o.id,o.created,ST[o.status],o.client,o.phone,o.recipient,o.occasion,o.style,o.mood,o.plan,o.date,o.story,o.phrase,o.notes]));
+ download('pedidos.csv','\ufeff'+rows.map(r=>r.map(c=>{let s=String(c==null?'':c);if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}).join(',')).join('\n'),'text/csv');
+};
+
+function renderSettings(){
+ $('tabSettings').innerHTML=`
+ <div class="setbox"><h3>Negocio</h3><label>Nombre</label><input id="sBrand" value="${esc(S.brand)}"><label>WhatsApp (con código de país, solo números)</label><input id="sWa" value="${esc(S.whatsapp)}" inputmode="numeric"><label>Mensaje sobre plazos</label><input id="sDel" value="${esc(S.delivery)}"><label>Texto bajo “Paquetes”</label><input id="sPS" value="${esc(S.pricesSub)}"></div>
+ <div class="setbox"><h3>Sección “Quién soy”</h3><label>Título</label><input id="sAT" value="${esc(S.aboutTitle)}"><label>Texto (escríbelo con tus palabras)</label><textarea id="sAX" rows="4">${esc(S.aboutText)}</textarea></div>
+ <div class="setbox"><h3>Paquetes y precios</h3>${S.plans.map((p,i)=>`<div class="planrow"><input data-k="name" data-i="${i}" value="${esc(p.name)}" aria-label="Nombre"><input data-k="price" data-i="${i}" type="number" min="0" value="${esc(p.price)}" aria-label="Precio"><input data-k="desc" data-i="${i}" value="${esc(p.desc)}" aria-label="Descripción"></div><input data-k="features" data-i="${i}" value="${esc(p.features.join(' | '))}" aria-label="Incluye (separa con |)" style="margin-bottom:14px"><label style="margin:0 0 14px"><input type="checkbox" data-k="featured" data-i="${i}" style="width:auto"${p.featured?' checked':''}> Destacado &nbsp; <input type="checkbox" data-k="from" data-i="${i}" style="width:auto"${p.from?' checked':''}> Precio “desde”</label>`).join('')}<div class="muted">En “Incluye” separa cada punto con el símbolo |</div></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"><button class="btn primary" id="sSave">Guardar cambios</button></div>
+ <div class="setbox"><h3>Seguridad y respaldo</h3><label>Nueva contraseña</label><input id="sPw" type="password" autocomplete="new-password" placeholder="Déjalo vacío para no cambiarla"><div class="previewactions"><button class="btn secondary" id="bkExport">Descargar respaldo (.json)</button><button class="btn secondary" id="bkImport">Restaurar respaldo</button><button class="btn danger" id="resetAll">Borrar todos los datos</button></div><input type="file" id="bkFile" accept=".json,application/json" style="display:none"><p class="muted" style="margin-top:12px">Importante: los pedidos se guardan solo en este navegador. Descarga un respaldo seguido y no borres los datos del sitio. Para recibir pedidos de cualquier dispositivo hace falta un servidor (por ejemplo Firebase o Supabase) y una contraseña verificada en el servidor.</p></div>`;
+ $('sSave').onclick=async()=>{
+  S.brand=$('sBrand').value.trim()||DEFAULTS.brand;S.whatsapp=$('sWa').value.replace(/\D/g,'')||DEFAULTS.whatsapp;S.delivery=$('sDel').value;S.pricesSub=$('sPS').value;S.aboutTitle=$('sAT').value;S.aboutText=$('sAX').value;
+  $('tabSettings').querySelectorAll('[data-k]').forEach(el=>{const p=S.plans[el.dataset.i],k=el.dataset.k;
+   if(k==='features')p.features=el.value.split('|').map(x=>x.trim()).filter(Boolean);else if(k==='price')p.price=Math.max(0,+el.value||0);else if(el.type==='checkbox')p[k]=el.checked;else p[k]=el.value})
+  const pw=$('sPw').value;if(pw){if(pw.length<6)return toast('La contraseña necesita 6 caracteres o más');LS.set('mch_hash',await sha(pw));$('sPw').value=''}
+  saveSettings();renderSite();toast('Ajustes guardados');
+ };
+ $('bkExport').onclick=()=>download('respaldo-musica-con-historia.json',JSON.stringify({settings:S,orders:orders(),counter:LS.get('mch_counter',0)},null,2),'application/json');
+ $('bkImport').onclick=()=>$('bkFile').click();
+ $('bkFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.orders))throw 0;if(!confirm('Esto reemplaza los pedidos y ajustes actuales. ¿Continuar?'))return;LS.set('mch_orders',d.orders);LS.set('mch_counter',d.counter||d.orders.length);if(d.settings){S=Object.assign({},DEFAULTS,d.settings);saveSettings()}renderSite();renderOrders();renderSettings();toast('Respaldo restaurado')}catch(x){toast('El archivo no es un respaldo válido')}};r.readAsText(f)};
+ $('resetAll').onclick=()=>{if(confirm('¿Borrar pedidos y ajustes de este navegador?')&&confirm('Última confirmación: no se puede deshacer.')){['mch_orders','mch_counter','mch_settings'].forEach(k=>localStorage.removeItem(k));S=Object.assign({},DEFAULTS);renderSite();renderOrders();renderSettings();toast('Datos borrados')}};
+}
+
+renderSite();updateCount();
+})();
 </script>
 </body>
 </html>
